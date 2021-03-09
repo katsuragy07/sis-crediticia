@@ -1,0 +1,75 @@
+
+.cronograma-letra{
+    font-size: 25px !important;
+}
+
+.table-bordered td, .table-bordered th{
+    border: 1px solid black !important;
+}
+
+
+
+
+#load_data_reporte table th{
+    background: rgb(73, 184, 0) !important;
+    color: black !important;
+}
+
+#load_data_reporte .table_titulo th{
+    background: rgb(250, 234, 9) !important;
+    padding: 2px;
+    color: black !important;
+}
+
+#load_data_reporte .table_titulo th h5{
+    margin: 0px;
+}
+
+
+
+#load_data_reporte_mora table th, #load_data_reporte table td{
+    border: 1px solid black !important;
+}
+
+#load_data_reporte_mora table th{
+    background: rgb(23, 255, 139) !important;
+    color: black !important;
+}
+
+#load_data_reporte_mora .table_titulo th h5{
+    margin: 0px;
+}
+
+.rp_mora_1{
+    background: rgb(207, 145, 166) !important;
+}
+.rp_mora_2{
+    background: rgb(255, 187, 0) !important;
+}
+.rp_mora_3{
+    background: rgb(99, 255, 216) !important;
+}
+.rp_mora_4{
+    background: rgb(237, 250, 55) !important;
+}
+
+
+.tablas_rep_capital thead tr th{
+    background:rgb(66, 66, 66) !important;
+    color: white !important;
+    text-transform: uppercase;
+}
+
+.tablas_rep_capital tbody tr th{
+    background:rgb(209, 209, 209) !important;
+}
+
+.tablas_rep_mov thead tr th{
+    background:rgb(66, 66, 66) !important;
+    color: white !important;
+    text-transform: uppercase;
+}
+
+.tablas_rep_mov tbody tr th{
+    background:rgb(209, 209, 209) !important;
+}

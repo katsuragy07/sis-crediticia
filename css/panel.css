@@ -1,0 +1,175 @@
+body{
+   
+    /*background-image: linear-gradient(135deg, rgba(31,123,229,1) 0%, rgba(58,139,232,1) 47%, rgba(70,153,234,1) 92%, rgba(72,156,234,1) 100%);*/
+    background: url("../img/bg.png");
+    background-position: fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+
+}
+
+header .container-fluid {
+    z-index: 1000;
+    display: block;
+    position: relative;
+    border-bottom: 3px solid rgb(231, 6, 6);
+    background: rgb(227,227,227);
+    background: linear-gradient(90deg, rgb(201, 126, 126) 0%, rgba(253,29,29,1) 55%, rgb(252, 151, 69) 95%);
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+
+.menu_nav{
+    position: relative;
+    display: block;
+    float: left;
+    width: 230px;
+    background: #ABAEB1;
+    
+    z-index: 1000;
+}
+
+
+.menu_nav .row .col{
+    border:1px solid rgb(158, 158, 158);
+}
+.menu_nav .row .col-12{
+    border:1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+.menu_nav .row .col-12:hover{
+    background: white;
+    color: rgb(65, 65, 65);
+}
+.menu_nav .row .col-12 p{
+    margin: 10px 10px;
+}
+
+
+
+.menu_btn{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 210px;
+    padding: 10px;
+}
+
+.btn_modals{
+    width: 130px;
+    float: right;
+    margin: 0px 5px;
+}
+
+
+
+
+.col-form-label{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.formulario-modal .col-form-label{
+    font-family: calibri;
+    font-size: 0.95em;
+    text-align: right;
+}
+.formulario-modal nav a{
+    color: rgb(22, 22, 22);
+}
+
+
+
+.modal_msg_ajax, #msg-ajax-result{
+    width:100%;
+    position:relative;
+    float:left;
+    padding: 2px 35px;
+    padding-bottom: 18px;
+}
+
+
+.modal_foto_perfil{
+    width:140px;
+    height:140px;
+    margin:auto;
+    margin-bottom:15px;
+    border-radius:100%; 
+    overflow:hidden;
+    border: 1px solid rgba(128, 128, 128, 0.37);
+    box-shadow: 1.5px 1.5px 3px black;
+}
+
+
+.nav-tabs .disabled{
+    color: rgba(255, 255, 255, 0) !important;
+}
+
+
+table{
+    background: rgb(243, 243, 243);
+}
+
+.modal table{
+    background: none;
+}
+
+
+
+.cronograma-letra{
+    font-size: 16px !important;
+}
+
+
+
+#load_data_reporte table th, #load_data_reporte table td{
+    border: 1px solid black !important;
+}
+
+#load_data_reporte table th{
+    background: rgb(73, 184, 0) !important;
+    color: black !important;
+}
+
+#load_data_reporte .table_titulo th{
+    background: rgb(250, 234, 9) !important;
+    padding: 2px;
+    color: black !important;
+}
+#load_data_reporte .table_titulo th h5{
+    margin: 0px;
+}
+
+
+
+#load_data_reporte_mora table th, #load_data_reporte_mora table td{
+    border: 1px solid black !important;
+}
+
+#load_data_reporte_mora table th{
+    background: rgb(23, 255, 139) !important;
+    color: black !important;
+}
+
+#load_data_reporte_mora .table_titulo th h5{
+    margin: 0px;
+}
+
+.rp_mora_1{
+    background: rgb(207, 145, 166);
+}
+.rp_mora_2{
+    background: rgb(255, 187, 0);
+}
+.rp_mora_3{
+    background: rgb(99, 255, 216);
+}
+.rp_mora_4{
+    background: rgb(237, 250, 55);
+}

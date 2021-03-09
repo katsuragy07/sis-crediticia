@@ -1,0 +1,732 @@
+CREATE DATABASE  IF NOT EXISTS `rapidito` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci */;
+USE `rapidito`;
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+--
+-- Host: 127.0.0.1    Database: rapidito
+-- ------------------------------------------------------
+-- Server version	5.6.16
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `aperturas`
+--
+
+DROP TABLE IF EXISTS `aperturas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `aperturas` (
+  `idapertura` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha_apertura` datetime DEFAULT NULL,
+  `fecha_cierre` datetime DEFAULT NULL,
+  `monto_apertura` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `monto_cierre` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cajas_idcaja` int(11) NOT NULL,
+  `usuarios_idusuario` int(11) NOT NULL,
+  `billetaje_hist_idbilletaje` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idapertura`),
+  KEY `fk_aperturas_cajas1_idx` (`cajas_idcaja`),
+  KEY `fk_aperturas_usuarios1_idx` (`usuarios_idusuario`),
+  KEY `fk_aperturas_billetaje_hist1_idx` (`billetaje_hist_idbilletaje`),
+  CONSTRAINT `fk_aperturas_billetaje_hist1` FOREIGN KEY (`billetaje_hist_idbilletaje`) REFERENCES `billetaje_hist` (`idbilletaje`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_aperturas_cajas1` FOREIGN KEY (`cajas_idcaja`) REFERENCES `cajas` (`idcaja`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_aperturas_usuarios1` FOREIGN KEY (`usuarios_idusuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aperturas`
+--
+
+LOCK TABLES `aperturas` WRITE;
+/*!40000 ALTER TABLE `aperturas` DISABLE KEYS */;
+INSERT INTO `aperturas` VALUES (2,'2019-11-25 09:52:23','2019-11-25 10:37:54','0','100',2,1,NULL),(3,'2019-12-02 18:03:34','2019-12-03 12:56:14','100','8878',2,1,NULL),(4,'2019-12-03 12:56:17','2019-12-05 10:57:15','8878','6484',2,9,NULL),(5,'2019-12-03 14:43:02','2019-12-05 11:05:29','200.4','1410.4',3,1,NULL),(6,'2019-12-05 11:06:58','2019-12-05 11:07:07','1410.4','1410.4',3,1,NULL),(7,'2019-12-05 11:11:05','2019-12-05 11:11:21','1410.4','1410.4',3,1,NULL),(8,'2019-12-05 11:38:37','2019-12-05 11:38:52','500','500',9,1,NULL),(9,'2019-12-05 11:39:18','2019-12-05 11:39:36','500','500',9,1,NULL),(10,'2019-12-05 11:41:07','2019-12-05 11:41:17','1410.4','1410.4',3,1,NULL),(11,'2019-12-05 11:45:10','2019-12-05 12:41:42','500','500',9,1,NULL),(12,'2019-12-05 11:58:22','2019-12-20 10:58:17','6484','4034.1',2,1,NULL),(13,'2019-12-05 12:41:59','2019-12-05 12:42:11','500','500',9,1,NULL),(14,'2019-12-05 12:42:42','2019-12-05 12:42:48','500','500',9,1,NULL),(15,'2019-12-05 12:43:01','2019-12-05 12:43:04','500','500',9,1,NULL),(16,'2019-12-05 12:45:08','2019-12-05 12:48:32','500','500',9,1,NULL),(17,'2019-12-05 12:54:56','2019-12-05 12:55:22','500','500',9,1,NULL),(18,'2019-12-05 13:01:59','2019-12-05 13:02:26','500','500',9,1,NULL),(19,'2019-12-05 16:01:12',NULL,'23',NULL,4,1,NULL),(20,'2019-12-05 16:01:15',NULL,'1410.4',NULL,3,1,NULL),(21,'2019-12-05 16:01:45','2019-12-05 16:50:26','500','500',9,9,NULL),(22,'2019-12-18 16:16:32','2019-12-18 16:56:11','500','900',9,9,NULL),(23,'2019-12-18 16:56:19','2019-12-18 17:18:35','900','900',9,9,NULL),(24,'2019-12-18 17:18:44','2019-12-18 17:20:17','900','800',9,9,NULL),(25,'2019-12-18 17:20:26','2019-12-18 17:20:41','800','800',9,9,NULL),(26,'2019-12-18 17:20:44','2019-12-18 17:22:12','800','700',9,9,NULL),(27,'2019-12-18 17:23:23','2019-12-18 17:24:41','700','700',9,9,NULL),(28,'2019-12-18 17:26:02','2019-12-18 17:26:31','700','700',9,9,NULL),(29,'2019-12-18 17:26:58','2019-12-18 17:27:29','700','700',9,9,NULL),(30,'2019-12-18 17:37:37','2019-12-18 17:39:51','700','600',9,9,NULL),(31,'2019-12-18 17:43:11','2019-12-18 18:01:01','600','600',9,9,NULL),(32,'2019-12-18 18:01:09','2019-12-18 18:02:23','600','600',9,9,NULL),(33,'2019-12-19 09:55:59','2019-12-19 10:02:38','600','1620',9,9,NULL),(34,'2019-12-19 17:09:39','2019-12-19 17:09:46','1620','1620',9,1,NULL),(35,'2019-12-19 18:59:28','2019-12-20 16:10:37','1620','1740',9,1,NULL),(38,'2019-12-20 11:00:00','2019-12-20 11:09:44','4034.1','4034.1',2,1,NULL),(39,'2019-12-20 11:13:21','2019-12-20 12:32:38','4034.1','4034.1',2,1,NULL),(40,'2019-12-20 12:33:08','2019-12-20 13:05:30','4034.1','4034.1',2,1,NULL),(41,'2019-12-20 13:05:40','2019-12-20 13:07:13','4034.1','4034.1',2,1,1),(42,'2019-12-20 13:06:48',NULL,'0',NULL,10,1,2),(43,'2019-12-20 13:07:31','2019-12-20 16:15:35','4034.1','4034.1',2,1,3),(44,'2019-12-20 16:10:40','2019-12-20 16:12:32','1740','1740',9,1,4),(45,'2019-12-20 16:34:21','2019-12-20 16:39:44','4034.1','4034.1',2,1,5),(46,'2019-12-21 09:38:31','2019-12-21 09:43:49','1740','2670',9,1,6),(47,'2019-12-30 16:04:15',NULL,'4034.1',NULL,2,1,7),(48,'2020-01-20 13:06:24',NULL,'2670',NULL,9,1,8);
+/*!40000 ALTER TABLE `aperturas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `aprobaciones`
+--
+
+DROP TABLE IF EXISTS `aprobaciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `aprobaciones` (
+  `idaprobacion` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha_reg` datetime NOT NULL,
+  `fecha_mod` datetime DEFAULT NULL,
+  `fecha_aprob` datetime DEFAULT NULL,
+  `creditos_idcredito` int(11) NOT NULL,
+  `usuarios_idusuario` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idaprobacion`),
+  KEY `fk_aprobaciones_creditos1_idx` (`creditos_idcredito`),
+  KEY `fk_aprobaciones_usuarios1_idx` (`usuarios_idusuario`),
+  CONSTRAINT `fk_aprobaciones_creditos1` FOREIGN KEY (`creditos_idcredito`) REFERENCES `creditos` (`idcredito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_aprobaciones_usuarios1` FOREIGN KEY (`usuarios_idusuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aprobaciones`
+--
+
+LOCK TABLES `aprobaciones` WRITE;
+/*!40000 ALTER TABLE `aprobaciones` DISABLE KEYS */;
+INSERT INTO `aprobaciones` VALUES (1,'2019-12-02 11:08:39',NULL,'2019-12-02 18:02:27',20,1),(2,'2019-12-02 12:54:59',NULL,'2019-12-06 10:18:53',17,1),(4,'2019-12-03 16:15:58',NULL,'2019-12-05 13:03:48',14,1),(5,'2019-12-06 10:15:38',NULL,'2019-12-06 10:16:14',17,1),(6,'2019-12-18 10:52:06',NULL,'2019-12-18 10:52:27',22,1),(7,'2019-12-18 11:21:52',NULL,'2019-12-18 11:22:07',23,1),(8,'2019-12-19 11:27:12',NULL,'2019-12-19 11:27:24',24,1),(9,'2019-12-18 12:03:32',NULL,'2019-12-18 12:03:44',25,1),(10,'2019-12-18 12:35:35',NULL,'2019-12-18 12:35:48',26,1),(11,'2019-12-18 12:37:19',NULL,'2019-12-18 12:37:28',27,1),(12,'2019-12-18 15:43:37',NULL,'2019-12-18 15:43:53',28,1),(13,'2019-12-19 10:40:54',NULL,'2019-12-19 10:41:05',29,1),(14,'2019-12-21 09:38:48',NULL,'2019-12-21 09:39:00',21,1),(17,'2020-01-18 11:22:09',NULL,'2020-01-18 11:47:57',30,1),(18,'2020-01-20 13:05:47',NULL,'2020-01-20 13:05:59',15,1),(19,'2020-01-20 16:00:30',NULL,'2020-01-20 16:00:41',31,1),(20,'2020-01-31 15:28:15',NULL,'2020-01-31 15:37:56',32,1),(21,'2020-02-01 02:55:21',NULL,'2020-02-01 02:55:32',33,1),(22,'2020-02-01 02:58:28',NULL,'2020-02-01 02:58:39',34,1),(23,'2020-02-01 03:02:30',NULL,'2020-02-01 03:02:41',35,1),(24,'2020-02-01 03:06:11',NULL,'2020-02-01 03:06:23',36,1),(25,'2020-02-01 03:07:40',NULL,'2020-02-01 03:07:54',37,1),(26,'2020-02-01 03:09:46',NULL,'2020-02-01 03:10:04',38,1),(27,'2020-02-01 03:21:00',NULL,'2020-02-01 03:21:14',39,1);
+/*!40000 ALTER TABLE `aprobaciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `aval`
+--
+
+DROP TABLE IF EXISTS `aval`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `aval` (
+  `idconyugue` int(11) NOT NULL AUTO_INCREMENT,
+  `apellido_pat` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido_mat` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `dni` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `sexo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `nacimiento` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `direccion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `referencia` varchar(85) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `ocupacion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `dir_trabajo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `parentesco` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
+  `tipo` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
+  `habilitado` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `clientes_idcliente` int(11) NOT NULL,
+  PRIMARY KEY (`idconyugue`),
+  KEY `fk_aval_clientes1_idx` (`clientes_idcliente`),
+  CONSTRAINT `fk_aval_clientes1` FOREIGN KEY (`clientes_idcliente`) REFERENCES `clientes` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aval`
+--
+
+LOCK TABLES `aval` WRITE;
+/*!40000 ALTER TABLE `aval` DISABLE KEYS */;
+INSERT INTO `aval` VALUES (2,'asdad','asdad','asdas','2343','M','','asds',NULL,'asdasd','asdasd','ESPOSO','CONYUGUE','SI',5),(3,'asdad','asdad','asdas','2343','M','','asds',NULL,'asdasd','asdasd','ESPOSO','CONYUGUE','SI',5),(4,'aaaaa','aaa','aa','q23123','M','','sadasd',NULL,'asd','asdasd','ABUELO','CONYUGUE','SI',4),(6,'bbb','bbb','bbbb','5555','M','2019-12-25','ffhdddd',NULL,'acscsac','ascsac','HERMANO','AVAL','SI',7),(7,'xxxx','vvvv','bbbb','121212','M','2019-12-06','dscsdcdsc',NULL,'ing','ascsac','CONOCIDO','AVAL','SI',12),(8,'vdvsdv','sdvsdv','sdvsdv','76767676','M','','dfdgfg','52','nnnn','sdfsdf','NIETO','AVAL','SI',130);
+/*!40000 ALTER TABLE `aval` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `billetaje`
+--
+
+DROP TABLE IF EXISTS `billetaje`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `billetaje` (
+  `idbilletaje` int(11) NOT NULL AUTO_INCREMENT,
+  `cant_200` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_100` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_50` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_20` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_10` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_5` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_2` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_1` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_0_5` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_0_2` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_0_1` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`idbilletaje`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `billetaje`
+--
+
+LOCK TABLES `billetaje` WRITE;
+/*!40000 ALTER TABLE `billetaje` DISABLE KEYS */;
+INSERT INTO `billetaje` VALUES (5,'9','7','2','2','2','2','','','','0','0'),(6,'','','','','','','','','','',''),(7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,'20','','','1','1','','2','','','','1');
+/*!40000 ALTER TABLE `billetaje` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `billetaje_hist`
+--
+
+DROP TABLE IF EXISTS `billetaje_hist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `billetaje_hist` (
+  `idbilletaje` int(11) NOT NULL AUTO_INCREMENT,
+  `cant_200` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_100` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_50` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_20` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_10` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_5` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_2` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_1` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_0_5` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_0_2` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cant_0_1` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`idbilletaje`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `billetaje_hist`
+--
+
+LOCK TABLES `billetaje_hist` WRITE;
+/*!40000 ALTER TABLE `billetaje_hist` DISABLE KEYS */;
+INSERT INTO `billetaje_hist` VALUES (1,'20','','','1','1','','2','','','','1'),(2,'','','','','','','','','','',''),(3,'20','','','1','1','','2','','','','1'),(4,'7','2','2','1','2','','','','','0','0'),(5,'20','','','1','1','','2','','','','1'),(6,'9','7','2','2','2','2','','','','0','0'),(7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `billetaje_hist` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cajas`
+--
+
+DROP TABLE IF EXISTS `cajas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cajas` (
+  `idcaja` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `capital` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `estado` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_creacion` datetime NOT NULL,
+  `billetaje_reg` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `usuarios_idusuario` int(11) NOT NULL,
+  `billetaje_idbilletaje` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idcaja`),
+  KEY `fk_cajas_usuarios1_idx` (`usuarios_idusuario`),
+  KEY `fk_cajas_billetaje1_idx` (`billetaje_idbilletaje`),
+  CONSTRAINT `fk_cajas_billetaje1` FOREIGN KEY (`billetaje_idbilletaje`) REFERENCES `billetaje` (`idbilletaje`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cajas_usuarios1` FOREIGN KEY (`usuarios_idusuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cajas`
+--
+
+LOCK TABLES `cajas` WRITE;
+/*!40000 ALTER TABLE `cajas` DISABLE KEYS */;
+INSERT INTO `cajas` VALUES (2,'Caja Principal','13337.7','ABIERTO','2019-11-25 09:52:15','NO',9,8),(3,'Caja 2','445','ABIERTO','2019-11-25 10:44:55','NO',11,NULL),(4,'cascs','23','ABIERTO','2019-12-03 12:23:16','NO',2,NULL),(5,'xx','11','DESHABILITADO','2019-12-03 12:26:22','NO',1,NULL),(7,'sacs','333','CERRADO','2019-12-03 12:27:55','NO',2,NULL),(8,'bbbb','222','DESHABILITADO','2019-12-03 12:28:25','NO',2,NULL),(9,'Caja NEW','6163','ABIERTO','2019-12-05 11:37:59','NO',9,5),(10,'otrosss','0','ABIERTO','2019-12-18 17:54:11','SI',9,6),(11,'aaaaaa','0','DESHABILITADO','2019-12-18 17:57:25','NO',11,7);
+/*!40000 ALTER TABLE `cajas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `clientes`
+--
+
+DROP TABLE IF EXISTS `clientes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clientes` (
+  `idcliente` int(11) NOT NULL AUTO_INCREMENT,
+  `dni` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido_pat` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido_mat` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `nacimiento` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `hijos` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `grado_ins` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `estado_civ` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `lugar_nac` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `direccion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `referencia` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `tipo_viv` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `distrito` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `provincia` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `tiempo_viv` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `comentario` text COLLATE utf8_spanish_ci,
+  `url_foto` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `url_domicilio` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `inscripcion` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `telefono` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `calificacion` varchar(25) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `ocupacion_tipo` varchar(35) COLLATE utf8_spanish_ci NOT NULL,
+  `ocupacion_des` varchar(75) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `habilitado` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `observaciones` text COLLATE utf8_spanish_ci,
+  PRIMARY KEY (`idcliente`)
+) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `clientes`
+--
+
+LOCK TABLES `clientes` WRITE;
+/*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
+INSERT INTO `clientes` VALUES (4,'19890483','MEZA ','HUALPARUCA','SILVERIO','1955-06-20','0','SECUNDARIA','CASADO','HUANCAYO','MARISCAL CASTILLA N° 1994','','PROPIA','CHILCA','HUANCAYO','10 AÑOS','','','','SI','00000','BUENO','',NULL,'SI','- Condonacion de deuda de: S/. 1233.60\n'),(5,'44393845','MUÑOZ','CASAS ','ROGELIO','1987-04-29','0','SUPERIOR','SOLTERO','HUANCAYO','AV. HUANCAVELICA N°638','','ALQUILADA','EL TAMBO','HUANCAYO','2','','',NULL,'SI','989890000',NULL,'',NULL,'SI',NULL),(6,'47726338','PERALTA ','RIVEROS','ANDY','1988-08-21','','SUPERIOR','SOLTERO','HUANCAYO','JR. AREQUIPA N° 473','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','967656142','REGULAR','',NULL,'SI',NULL),(7,'20081139','RAMOS','JOAQUIN ','ROLANDO','','','SUPERIOR','SOLTERO','HUANCAYO','JR. ALEJANDRO O. DEUSTUA N° 399','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','964635110',NULL,'',NULL,'SI',NULL),(8,'41722469','CHAVEZ ','VERASTEGUI','WILSON TORIBIO','1962-12-12','','SUPERIOR','SOLTERO','HUANCAYO','PSJ. LAS LOMAS N°499','','','PIO PATA','HUANCAYO','','',NULL,NULL,'SI','000000000',NULL,'',NULL,'SI',NULL),(9,'41245294','ESPINOZA','ORREGO ','RONALD ANTHONY','','','TECNICA','SOLTERO','HUANCAYO','AV. PALIAN N° 840','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','000000000','MALO','',NULL,'SI',NULL),(10,'20115680','LOARDO','NUÑEZ','ORLANDO ALEX','1978-02-15','1','SUPERIOR','CONVIVIENTE','HUANCAYO','JR. AREQUIPA N° 499','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','999993593',NULL,'',NULL,'SI',NULL),(11,'20115680','MACHUCA','BORJA','FELIX SOLANO','1987-07-22','','','','','JR. PROGRESO S/N','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','000000000','BUENO','',NULL,'SI',NULL),(12,'40625365','ARAUJO','SANTOS','CARLOS VICENTE','','','','','','JR. ALEJANDRO O. DEUSTUA N° 943','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','975233122','MALO','',NULL,'SI',NULL),(13,'44279299','CHAVEZ','JACOBE','JOSE LUIS','','','','','','JR. AREQUIPA N° 499','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','924039022',NULL,'',NULL,'SI',NULL),(14,'23265947','RAMOS ','ENRIQUE','PROSPERO','','','','','','AV. HUANCAVELICA N°685','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','000000000','MALO','',NULL,'SI',NULL),(15,'41684212','ROJAS ','GAMBOA DE NOGALES','GLADYS MARISOL','','','','','','MANCHEGO MUÑOZ N° 352','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','921377102',NULL,'',NULL,'SI',NULL),(16,'41219351','YARANGA','QUISPE','LEANDRO','','','','','','JR HUANCAS N° 1281','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','964408872',NULL,'',NULL,'SI',NULL),(17,'80083301','ARROYO ','HUAYNATE','ROSSY HAYDEE','','','','','','PSJ LAS ISLAS N° 516 AA. HH.','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','920510025',NULL,'',NULL,'SI',NULL),(18,'20550103','ROMERO','HURTADO ','INOCENCIA YOLANDA','','','','','','CALLE CIRCUITO LOS HÉROES N° 202','','','PIO PATA','HUANCAYO','','',NULL,NULL,'SI','925430862',NULL,'',NULL,'SI',NULL),(19,'20093764','CAMPOS ','LOPEZ ','ROSARIO ISABEL','','','','','','AV. CENTENARIO','','','PILCOMAYO','HUANCAYO','','',NULL,NULL,'SI','987564466',NULL,'',NULL,'SI',NULL),(20,'20048513','CAMAVILCA','CHAVEZ','JUDITH SARITA','','','','','','CALLE 3 MZ C LT 16 - VILLA PERIODISTA','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','997959136',NULL,'',NULL,'SI',NULL),(21,'43810115','MAITA','RAFAEL','JANED AQUILINA','','','','','','JR. HUANCAS N° 1394','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','914838485',NULL,'',NULL,'SI',NULL),(22,'47645796','CCENTE','GOMEZ','LIZ','','','','','','JR. AREQUIPA N° 473','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','967656142',NULL,'',NULL,'SI',NULL),(23,'44639440','CAHUANA','OCHOA','JOSEP ANDRES','','','','','','JR. LIBERTAD N° 605','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','942139239',NULL,'',NULL,'SI',NULL),(24,'19820682','DE LA PEÑA','MARILU','MERCEDES','','','','','','AV. CATALINA HUANCA N° 371','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','989252301',NULL,'',NULL,'SI',NULL),(25,'19920893','BUENDIA ','YALLI','EPIFANIA','','','','','','JR. LOS HUANCAS N°496','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','928751106',NULL,'',NULL,'SI',NULL),(26,'44439463','MONTES','BALTAZAR ','JESENIA JULIZA','','','','','','JR. JOSE OLAYA N° 177','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','960756995',NULL,'',NULL,'SI',NULL),(27,'19803612','TORRES ','AVILA','CARLOS HUMBERTO','','','','','','JR AGUIRRE MORALES N° 1188','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','949573976',NULL,'',NULL,'SI',NULL),(28,'04011304','LOPE','MEDRANO','SILVIA DORIS','','','','','','PSJ. CHUCUITO MZ5 LT 0 ','','','PILCOMAYO','HUANCAYO','','',NULL,NULL,'SI','953671127',NULL,'',NULL,'SI',NULL),(29,'44628543','RIOS ','ROJAS','KARINA','','','','','','JR. DIAMANTE AZUL N° 153','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','921184887',NULL,'',NULL,'SI',NULL),(30,'20006336','CALLUPE ','OJEDA','RUTH ELIANA','','','','','','JR. LIBERTAD N°535','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','999720255',NULL,'',NULL,'SI',NULL),(31,'47367578','ROMERO','HERRERA','PILAR','','','','','','JR. HIDRA MZ E LOTE 6','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','956439973',NULL,'',NULL,'SI',NULL),(32,'19928508','SALVATIERRA ','VELIZ','GILDA ELIANA','','','','','','JR. AREQUIPA N° 731','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','964754900',NULL,'',NULL,'SI',NULL),(33,'43480244','HUAROC ','POCOMUCHA ','KRISBET','','','','','','JR. SANTOS CHOCANO N° 951','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','989815297',NULL,'',NULL,'SI',NULL),(34,'47860194','REYMUNDO','CARRERA','CLARA','','','','','','PSJ. HUGO CHAVEZ MZ O LT 22','','','PALIAN','HUANCAYO','','',NULL,NULL,'SI','964596957',NULL,'',NULL,'SI',NULL),(35,'46497378','MARQUEZ','NESTARES ','JESSICA YANINA','','','','','','JR. SEBASTIAN LORENTE N° 558','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','964400100',NULL,'',NULL,'SI',NULL),(36,'77662005','MARQUINA','DE ARMERO','RODRIGO ORLANDO','','','','','','PSJ. GULLIVAN N° 102','','','PALIAN','HUANCAYO','','',NULL,NULL,'SI','988572561',NULL,'',NULL,'SI',NULL),(37,'20075856','ALCOCER','BARRIENTOS','MIRIAM','','','','','','JR. NECOCHEA MZ B LT 4 - LA PRADERA','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','968920148',NULL,'',NULL,'SI',NULL),(38,'42493451','CABELLO','GARCIA','LUIS FERNANDO','','','','','','AV. FERROCARRIL N° 475','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','981811161',NULL,'',NULL,'SI',NULL),(39,'19927787','POMA','CANCHUMANI','ESTEBAN VICTOR','','','','','','AV. 12 DE OCTUBRE N° 402','','','CULLPA ALTA','HUANCAYO','','',NULL,NULL,'SI','926993108',NULL,'',NULL,'SI',NULL),(40,'06179596','FERNANDEZ','SAMANIEGO',' MARUJA CECILIA','','','','','','JR. AREQUIPA N° 658 ','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','985431389',NULL,'',NULL,'SI',NULL),(41,'44462205','RIOS','ORTIZ','CESAR AUGUSTO','','','','','','JR. 13 DE NOVIEMBRE N° 1125','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','954600050',NULL,'',NULL,'SI',NULL),(42,'10256859','ARIAS','TORRES','JOSE','','','','','','JR. COLINA N° 689','','','JAUJA','JAUJA','','',NULL,NULL,'SI','943965936',NULL,'',NULL,'SI',NULL),(43,'19923319','BAUTISTA','QUISPEALAYA','ADELAIDA CASIMIRA','','','','','','JR. 1 DE MAYO ','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','969244508',NULL,'',NULL,'SI',NULL),(44,'19909471','SALDAÑA','RAMIREZ','JOSE LUIS','','','','','','CALLE LAS QUEBRADAS N° 140','','','PIO PATA','HUANCAYO','','',NULL,NULL,'SI','994775704',NULL,'',NULL,'SI',NULL),(45,'20012238','TORRES','MARAVI','RODOLFO VICTOR','','','','','','JR. PARRA DE RIEGO N°540','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','924043748',NULL,'',NULL,'SI',NULL),(46,'19931799','CARDENAS ','DE SORIANO ','SOLEDAD JULIA','','','','','','PSJ. ELIAS AGUIRRE N° 220','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','949305855',NULL,'',NULL,'SI',NULL),(47,'21249666','TANTAVILCA','MARTINEZ','MARIA CECILIA','','','','','','JR. AREQUIPA N° 658','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','998974503',NULL,'',NULL,'SI',NULL),(48,'42645968','MOLINA','SANCHOMA','ITALO RAUL','','','','','','PSJ. SAN ANTONIO N° 181','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','967309797',NULL,'',NULL,'SI',NULL),(49,'19838386','ZARABIA','CONDORI','LEONOR','','','','','','PSJ. BRASIL N° 521','','','SAÑOS CHICO','HUANCAYO','','',NULL,NULL,'SI','937169980',NULL,'',NULL,'SI',NULL),(50,'42735885','VELASQUEZ ','CAMPODONICO','JUANA JACKELINE','','','','','','JR. JOSE OLAYA N° 925','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','946826537',NULL,'',NULL,'SI',NULL),(51,'19991160','HUAMAN','GARAY','MARIO','','','','','','JR. ANTONIO LOBATO N° 1043','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','914023283',NULL,'',NULL,'SI',NULL),(52,'72478132','HUAMAN','VARGAS ','JHAMMEL ORLANDO','','','','','','CALLE SANTA ROSA MZ Y LT 10 ','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','953574039',NULL,'',NULL,'SI',NULL),(53,'19861956','ÑAÑEZ','CARO','JUAN ANTONIO','','','','','','CALLE LAS QUEBRADAS N° 140','','','PIO PATA','HUANCAYO','','',NULL,NULL,'SI','964998654',NULL,'',NULL,'SI',NULL),(54,'80017198','POMA ','DE LA CRUZ ','HERMAN','','','','','','AV. 12 DE OCTUBRE N° 402','','','CULLPA ALTA','HUANCAYO','','',NULL,NULL,'SI','926993108','MALO','',NULL,'SI',NULL),(55,'19990234','GORA','RIVERA','LIDA MARITZA','','','','','','CALLE LAS ORQUIDEAS MZ B-2 LT 16','','','HUAMANCACA CHICO','HUANCAYO','','',NULL,NULL,'SI','948698054',NULL,'',NULL,'SI',NULL),(56,'19914795','PARRA','RIVERA','LUIS ENRIQUE ','','','','','','JR. BLANDA N° 125 - MILLOTINGO','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','916730788',NULL,'',NULL,'SI',NULL),(57,'23522393','PERALTA','CANALES','AGUSTIN','','','','','','AV. LEONCIO PRADO N° 1179','','','CHILCA','HUANCAYO','','',NULL,NULL,'SI','064214127','MALO','',NULL,'SI',NULL),(58,'47923529','COLONIO','NUÑEZ','JHONY PAUL','','','','','','JR. PANAMA N° 1048','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','922312579',NULL,'',NULL,'SI',NULL),(59,'19818737','MARQUEZ','RODRIGUEZ','LUIS CARLOS','','','','','','PSJ. SAN CARLOS N° 474','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','935070432',NULL,'',NULL,'SI',NULL),(60,'46155602','CAMPO','CESPEDES','RAQUEL ESTELA','','','','','','PSJ. COCHARCAS N° 12','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','923739175',NULL,'',NULL,'SI',NULL),(61,'77130164','SANCHEZ','DE LA CRUZ ','CINTHYA CONSUELO','','','','','','JR. PARRA DE RIEGO N°581','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','000000000',NULL,'',NULL,'SI',NULL),(62,'40792615','SANTOS','CRISTOBAL','SULEMA','','','','','','JR. AMATISTA N° 160 - CIUDAD UNIVERSITARIA','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','957900973',NULL,'',NULL,'SI',NULL),(63,'44196870','POMAYLLE','RIVERA','LUZ ROXANA','','','','','','JR. LOS SAUCES N° S/N','','','SAN AGUSTIN','HUANCAYO','','',NULL,NULL,'SI','964998654',NULL,'',NULL,'SI',NULL),(64,'48120308','BAQUERIZO','CALLUPE','LUIS KEVIN','','','','','','CALLE LIBERTAD N° 535','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','963958011',NULL,'',NULL,'SI',NULL),(65,'20020660','CORILLOCLLA ','PROSOPIO ','EULALIA JULIA','','','','','','PROLONGACIÓN LIMA N° 2275','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','979606043',NULL,'',NULL,'SI',NULL),(66,'19963613','PAREDES','VARGAS','YENDER JOSE','','','','','','AV. SAN MARTIN N° 936','','','SAN AGUSTIN DE CAJAS','HUANCAYO','','',NULL,NULL,'SI','939254928',NULL,'',NULL,'SI',NULL),(67,'20099052','MEDINA','YANCE','EMILIANA','','','','','','JR. ANTONIO LOBATO N° 354','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','921018107',NULL,'',NULL,'SI',NULL),(68,'48434295','LAUREL','CASTRO','JOSE COOPER','','','','','','JR. HUANCAS N° 1521','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','934409741',NULL,'',NULL,'SI',NULL),(69,'41675575','ACUÑA ','SOTO','JESSICA KARINA','','','','','','JR. HUASCAR S/N ','','','HUAMANCACA CHICO','HUANCAYO','','',NULL,NULL,'SI','9473351211',NULL,'',NULL,'SI',NULL),(70,'19986232','REYNOSO','LARA','ANSELMO','','','','','','JR. JOSE OLAYA N° 173','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','925810884',NULL,'',NULL,'SI',NULL),(71,'20021621','PALOMINO','SANTIAGO','AMELIA','','','','','','AV. CENTENARIO N° 557','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','998050770','MALO','',NULL,'SI',NULL),(72,'62460985','RIOS','TAMARA','WENDY','','','','','','PSJ. LOS JASMINES N° 352 SEC. 19','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','976513567',NULL,'',NULL,'SI',NULL),(73,'20064407','HIDALGO','SEGURA','RONALD ALFREDO','','','','','','JR. TACNA N° 630','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','000000000',NULL,'',NULL,'SI',NULL),(74,'48192121','PALACIOS','GONZALES','ANGEL GABRIEL','','','','','','JR. LIMA N° 681 SECTOR 17','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','957527635',NULL,'',NULL,'SI',NULL),(75,'44411762','LAURA','CHANCAY','EDITH PILAR','','','','','','AV. JULIO SUMAR N° 138','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','936567160',NULL,'',NULL,'SI',NULL),(76,'41662049','ZAMUDIO','SANCHEZ','CARLOS ADMUNDO','','','','','','JR. PATRIOTA N° 589','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','988664536',NULL,'',NULL,'SI',NULL),(77,'71066313','YALICO','QUINTANA','KERLI YORDANA','','','','','','AV. 26 DE JULIO N° 4156','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','934142364',NULL,'',NULL,'SI',NULL),(78,'20011679','HURTADO','DE PUCHOC','ALEJANDRA SABINA','','','','','','JR. LOS ROBLES N° 2130','','','SAÑOS CHICO','HUANCAYO','','',NULL,NULL,'SI','934142364',NULL,'',NULL,'SI',NULL),(79,'45379197','QUINTANA','DE MARIN','ROSITA ELVIRA','','','','','','AV. 26 DE JULIO N° 4156','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','934142364',NULL,'',NULL,'SI',NULL),(80,'20590400','MARIN','DE QUINTANILLA','SILVIA BERTHA','','','','','','AV. 26 DE JULIO N° 4156','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','000000000',NULL,'',NULL,'SI',NULL),(81,'19858994','HUAYHUA','DE LA CRUZ','RAUL LUIS','','','','','','JR. OSWALDO BARRENTO N° 10','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','967447282',NULL,'',NULL,'SI',NULL),(82,'08146479','ROSALES','ROJAS','REYNALDA','','','','','','JR. OSWALDO BARRENTO N° 1365','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','943701095',NULL,'',NULL,'SI',NULL),(83,'47562825','MOLINA','BALVIN','ERLINDA','','','','','','JR. OSWALDO BARRENTO N° 10','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','922513231',NULL,'',NULL,'SI',NULL),(84,'46347763','RAMOS','SANTOS','AMAYRA VANESSA','','','','','','JR. LIMA N° 681 SECTOR 17','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','924958669','MALO','',NULL,'SI',NULL),(85,'19931588','MANGO ','DE CONDOR','TEODORA','','','','','','JR. JOSE OLAYA N° 458','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','978786097',NULL,'',NULL,'SI',NULL),(86,'76234021','MARIN','ASTETE','JEAMPIERE FIDEL','','','','','','AV. RAMON CASTILLA N° 797','','','CONCEPCION','CONCEPCION','','',NULL,NULL,'SI','916413228',NULL,'',NULL,'SI',NULL),(87,'44418079','BARZOLA','BARRETO','JESUS RICARDO','','','','','','JR. JORGE CHAVEZ BLOCK L SECTOR 19','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','986485322',NULL,'',NULL,'SI',NULL),(88,'48216271','CARBAJAL','PALOMINO','GISSETT LEYDI','','','','','','AV. HUANCAVELICA N° 740','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','949475807',NULL,'',NULL,'SI',NULL),(89,'46711885','HUAYHUA','ESPINOZA','SILVER ALFONSO','','','','','','AA. HH. JUAN PARRA DE RIEGO MZ E LT 5','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','969652957',NULL,'',NULL,'SI',NULL),(90,'74141967','BARZOLA','LAURA','JASMIN GIOVANA','','','','','','AV. JULIO SUMAR N° 138','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','000000000',NULL,'',NULL,'SI',NULL),(91,'19821050','CARBAJAL','ARIAS','YONY HUGO','','','','','','AV. INDEPENDENCIA N° 599','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','961871007',NULL,'',NULL,'SI',NULL),(92,'44455902','VELASQUEZ ','CHUPAN','JOEL ANDRES','','','','','','JR. PORVENIR N° 231','','','COCHAS CHICO','HUANCAYO','','',NULL,NULL,'SI','947324944',NULL,'',NULL,'SI',NULL),(93,'45768004','OTAIRO','PARRAGA','ABEL RICHARD','','','','','','CARRETERA CENTRAL N° 912','','','SAN AGUSTIN DE CAJAS','HUANCAYO','','',NULL,NULL,'SI','943054435',NULL,'',NULL,'SI',NULL),(94,'71921087','TAPARA','LLACUA','JHORDY FRANCHESCOLI','','','','','','JR. REAL Y ARTERIAL ','','','CHILCA','HUANCAYO','','',NULL,NULL,'SI','956958327',NULL,'',NULL,'SI',NULL),(95,'44263315','CALCINA','LOPEZ','AURELHIO JHONATTAN','','','','','','AV. HUANCAVELICA N° 740','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','944848290',NULL,'',NULL,'SI',NULL),(96,'20088381','CALDERON','PINZAS','ANA PATRICIA','','','','','','PSJ. ATLANTIS N°170 SECTOR 9','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','974290950',NULL,'',NULL,'SI',NULL),(97,'40245040','SALDAÑA','TAPIA','RAQUEL CEFORA','','','','','','JR. ALAN GARCIA N° 240 SECTOR 04','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','975890229',NULL,'',NULL,'SI',NULL),(98,'46398806','GOMEZ','ZANABRIA','MARICRUZ MEDALI','','','','','','JR. ANTONIO LOBATO N° 1330 SECTOR 4','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','000000000',NULL,'',NULL,'SI',NULL),(99,'41712234','SALAZAR ','GARAY','SILVIA LUZ','','','','','','JR. HUAMACHUCO N° 770','','','PILCOMAYO','HUANCAYO','','',NULL,NULL,'SI','935552415',NULL,'',NULL,'SI',NULL),(100,'19916611','LINDO','GALVAN','RUBEN WALTER','','','','','','JR. 8 DE DICIEMBRE ','ANEXO HUAYAO','','CHUPACA','HUANCAYO','','',NULL,NULL,'SI','999265226',NULL,'',NULL,'SI',NULL),(101,'75970781','MESTANZA','VILCAPOMA','ROSARIO','','','','','','AV. ALFHA N° 266','COOPERATIVA SANTA ISABEL','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','927225914',NULL,'',NULL,'SI',NULL),(102,'20046609','ALEJO','TAYPE','ELIZABET LEONOR','','','','','','JR. ALISOS N° 345','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','917806799',NULL,'',NULL,'SI',NULL),(103,'47744555','FIOL','RIVAS','ABELARDO','','','','','','JR. PARRA DE RIEGO N° 628','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','942873573',NULL,'',NULL,'SI',NULL),(104,'19914814','COSME','RICSE','MARCELINO ANTONIO','','','','','','PSJ. COSME N° 102','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','947441488',NULL,'',NULL,'SI',NULL),(105,'40010258','TARDIO','LOAYZA ','LUZMILA','','','','','','PROLONGACIÓN PIURA N° 1331','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','978919381',NULL,'',NULL,'SI',NULL),(106,'75191385','CALLO','ROJAS','ALICIA PILAR','','','','','','JR. NEMESIO RAEZ N° 1050','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','923704147',NULL,'',NULL,'SI',NULL),(107,'73047185','DAVID','CIERTO','LYAN KATHERINE','','','','','','JR. ANTONIO LOBATO N° 244','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','935938391',NULL,'',NULL,'SI',NULL),(108,'43017035','CONDOR','MADRID','FLOR DE MARIA','','','','','','JR. JULIAN HUANAY N° 122','SECTOR 10','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','953933375',NULL,'',NULL,'SI',NULL),(109,'73112442','MEDRANO','CORILLOCLLA','LESLY NAHOMI','','','','','','PSJ. VISTA ALEGRE N° 131','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','000000000',NULL,'',NULL,'SI',NULL),(110,'48134522','CHUQUILLANQUI ','SOTO','YEFERSON PAOLO','','','','','','AV. PASEO LA BREÑA N° 519','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','924130314',NULL,'',NULL,'SI',NULL),(111,'20102982','SOLANO','VELARDE','NANCY VILMA','','','','','','JR. LA UNION N° 289','VILCACOTO','','PALIAN','HUANCAYO','','',NULL,NULL,'SI','989799256','BUENO','',NULL,'SI',NULL),(112,'46893928','HUAMANI','MOLINA','GUSTAVO ALEJANDRO','','','','','','JR. JULIO LLANOS N° 364','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','929458781',NULL,'',NULL,'SI',NULL),(113,'44297541','CHUCO','AGUIRRE','JOSE LUIS','','','','','','CALLE CHAVIN N° 308','3 ESQUINAS','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','938433474',NULL,'',NULL,'SI',NULL),(114,'46831932','MANRIQUE','ORTIZ ','POOL VLADIMIR','1994-11-08','','','','','JR. PARRA DE RIEGO N°581','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','976130738',NULL,'',NULL,'SI',NULL),(115,'80002859','POMAHUALOI','VILCHEZ','MILO MILLER','','','','','','AV. RAMON CASTILLA N° 152','ANEXO PACCHA','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','000000000',NULL,'',NULL,'SI',NULL),(116,'43449337','CHUCO','AGUIRRE','MIGUEL ANGEL','','','','','','CALLE CHAVIN N° 308','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','978280828',NULL,'',NULL,'SI',NULL),(117,'20019795','VARGAS','DE LA CRUZ ','VLADIMIR LUIS','','','','','','JR. JULIO C. TELLO N° 1022','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','917947567','BUENO','',NULL,'SI',NULL),(118,'19847160','TINEO','VELITA','ANTONIO','','','','','','JR. PARRA DE RIEGO N°581','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','936466421',NULL,'',NULL,'SI',NULL),(119,'19943634','COCHACHI','SOLANO','ESTEBAN GERARDO','','','','','','PSJ. ROJAS N° 182','','','CHILCA','HUANCAYO','','',NULL,NULL,'SI','984330704',NULL,'',NULL,'SI',NULL),(120,'47576938','GONZALES ','PRADO ','ROSA','','','','','','PSJ. LOS ANGELES N° 284','','','HUANCAYO','HUANCAYO','','',NULL,NULL,'SI','936034640',NULL,'',NULL,'SI',NULL),(121,'74234731','DE LA CRUZ','CANTARO','JESSI','','','','','','JR. LA HERRADURA ','PSJ. LOS NOGALES ','','PILCOMAYO','HUANCAYO','','',NULL,NULL,'SI','922976656',NULL,'',NULL,'SI',NULL),(122,'47726338','JULCA','CENIZARIO','CINTHYA','','','','','','AV. PROGRESO N° 826','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','000000000',NULL,'',NULL,'SI',NULL),(123,'20011425','NAULA','LLANCO','GISELA','','','','','','PSJ. EL SOL N° S/N ','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','969444504',NULL,'',NULL,'SI',NULL),(124,'42673599','GOMEZ ','SEDANO','JUAN CARLOS','','','','','','PSJ. SANTA ROSA N° S/N','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','000000000',NULL,'',NULL,'SI',NULL),(125,'40272188','TERREL','ROSALES','ISAIAS SEBASTIAN','','','','','','PSJ. LAS TURQUESAS N° 100','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','983989756',NULL,'',NULL,'SI',NULL),(126,'19917677','HUAMANI','QUISPE','PEDRO JACINTO','','','','','','JR. YAUYOS N° 259','PARQUE INDUSTRIAL - AV. HUANCAVELICA','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','983640511',NULL,'',NULL,'SI',NULL),(127,'75047268','TERREROS ','CHAVEZ','ALVARO OMAR','','','','','','CALLE REAL N° 378','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','922181903',NULL,'',NULL,'SI',NULL),(128,'43760865','NINALAYA ','CHUQUILLANQUI','RICHARD','','','','','','PSJ. LAS MONTAÑAS N° 143','','','PIO PATA','HUANCAYO','','',NULL,NULL,'SI','939340139',NULL,'',NULL,'SI',NULL),(129,'29400964','MORENO','GIRONDO','ROSA MARINA','','','','','','JR. B. LEGUIA N°360 ','','','CHILCA','HUANCAYO','','',NULL,NULL,'SI','000000000',NULL,'',NULL,'SI',NULL),(130,'74627137','CAMASCA','HUAROC','CLAUDIA LISSETH','','','','','','JR. ALEJANDRO O. DEUSTUA N° 411','','','EL TAMBO','HUANCAYO','','',NULL,NULL,'SI','977662803','BUENO','EMPLEADO','otros','SI',NULL);
+/*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `consumo`
+--
+
+DROP TABLE IF EXISTS `consumo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `consumo` (
+  `idconsumo` int(11) NOT NULL AUTO_INCREMENT,
+  `dedicacion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `tiempo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `ingreso` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `lugar_trabajo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `profesion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `clientes_idcliente` int(11) NOT NULL,
+  PRIMARY KEY (`idconsumo`),
+  KEY `fk_consumo_clientes1_idx` (`clientes_idcliente`),
+  CONSTRAINT `fk_consumo_clientes1` FOREIGN KEY (`clientes_idcliente`) REFERENCES `clientes` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `consumo`
+--
+
+LOCK TABLES `consumo` WRITE;
+/*!40000 ALTER TABLE `consumo` DISABLE KEYS */;
+INSERT INTO `consumo` VALUES (1,'ing','3','2500','uncp','ing sistemas',4),(2,' zx z','x x zx',' zx z',' zx x','zx x ',4);
+/*!40000 ALTER TABLE `consumo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `conyugue`
+--
+
+DROP TABLE IF EXISTS `conyugue`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `conyugue` (
+  `idconyugue` int(11) NOT NULL AUTO_INCREMENT,
+  `apellido_pat` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido_mat` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `dni` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `sexo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `nacimiento` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `direccion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `referencia` varchar(85) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `ocupacion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `dir_trabajo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `parentesco` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
+  `tipo` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
+  `habilitado` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `clientes_idcliente` int(11) NOT NULL,
+  PRIMARY KEY (`idconyugue`),
+  KEY `fk_conyugue_clientes1_idx` (`clientes_idcliente`),
+  CONSTRAINT `fk_conyugue_clientes1` FOREIGN KEY (`clientes_idcliente`) REFERENCES `clientes` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `conyugue`
+--
+
+LOCK TABLES `conyugue` WRITE;
+/*!40000 ALTER TABLE `conyugue` DISABLE KEYS */;
+INSERT INTO `conyugue` VALUES (1,'sadsad','asdasd','asdasd','asdasd','M','','asds',NULL,'asdasda','asdsad','CONOCIDO','AVAL','SI',6),(2,'sadsad','asdasd','asdasd','asdasd','M','','asds',NULL,'asdasda','asdsad','CONOCIDO','AVAL','SI',6),(4,'aaa','aaa','vvv','weew','M','','dsdsf','sdfdsf','sdfdsf','sdfdsf','TIO','CONYUGUE','SI',130);
+/*!40000 ALTER TABLE `conyugue` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `creditos`
+--
+
+DROP TABLE IF EXISTS `creditos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `creditos` (
+  `idcredito` int(11) NOT NULL AUTO_INCREMENT,
+  `nro_credito` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `monto_prop` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `monto_aprob` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `n_cuotas` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `n_cuotas_aprob` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `interes` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `interes_aprob` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `frecuencia` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_inicio` date NOT NULL,
+  `m_cuotas` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `m_cuotas_aprob` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `m_interes` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `m_interes_aprob` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `m_total` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `m_total_aprob` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `fecha_reg` datetime NOT NULL,
+  `estado` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `clientes_idcliente` int(11) NOT NULL,
+  `conyugue_id` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `aval_id` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`idcredito`),
+  KEY `fk_creditos_clientes1_idx` (`clientes_idcliente`),
+  CONSTRAINT `fk_creditos_clientes1` FOREIGN KEY (`clientes_idcliente`) REFERENCES `clientes` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `creditos`
+--
+
+LOCK TABLES `creditos` WRITE;
+/*!40000 ALTER TABLE `creditos` DISABLE KEYS */;
+INSERT INTO `creditos` VALUES (14,NULL,'','1000','5','5','12','12','SEMANAL','2019-11-18','','224','','120','','1120','2019-11-26 12:30:07','FINALIZADO',9,'',''),(15,'2','1111','1000','4','4','12','12','SEMANAL','2019-12-10','311.1','280','133.4','120','1244.4','1120','2019-12-02 09:34:19','FINALIZADO',57,'',''),(17,NULL,'8000','8000','25','15','5','5','SEMANAL','2019-12-26','336','560','400','400','8400','8400','2019-12-02 10:32:13','FINALIZADO',117,'',''),(20,NULL,'1222','1222','4','4','12','12','DIARIO','2019-12-19','342.2','342.2','146.7','146.7','1368.7','1368.7','2019-12-02 11:06:20','FINALIZADO',111,'',''),(21,NULL,'2500','2500','10','10','5','5','SEMANAL','2019-12-23','262.5','262.5','125','125','2625','2625','2019-12-17 12:13:40','FINALIZADO',84,'',''),(22,NULL,'500','500','12','12','12','12','SEMANAL','2019-12-19','46.7','46.7','60','60','560','560','2019-12-18 10:51:19','FINALIZADO',11,'',''),(23,NULL,'300','300','6','6','8','8','SEMANAL','2019-11-26','54','54','24','24','324','324','2019-12-18 10:52:01','FINALIZADO',12,'',''),(24,NULL,'1200','1200','20','20','10','10','DIARIO','2019-12-10','66','66','120','120','1320','1320','2019-12-19 11:27:08','FINALIZADO',71,'',''),(25,NULL,'800','800','15','15','10','10','DIARIO','2019-11-26','58.7','58.7','80','80','880','880','2019-12-18 12:03:29','FINALIZADO',57,'',''),(26,NULL,'400','400','10','10','10','10','SEMANAL','2019-11-19','44','44','40','40','440','440','2019-12-18 12:35:22','FINALIZADO',54,'',''),(27,NULL,'100','100','5','5','10','10','SEMANAL','2019-11-12','22','22','10','10','110','110','2019-12-18 12:37:15','FINALIZADO',14,'',''),(28,NULL,'2500','2500','15','15','12','12','SEMANAL','2019-12-03','186.7','186.7','300','300','2800','2800','2019-12-18 15:43:17','FINALIZADO',71,'',''),(29,NULL,'400','400','10','10','12','12','SEMANAL','2019-12-10','44.8','44.8','48','48','448','448','2019-12-19 10:40:48','FINALIZADO',12,'','7'),(30,'1','2222','2000','5','10','12','8','SEMANAL','2020-01-20','497.8','216','266.7','160','2488.7','2160','2020-01-18 09:59:16','FINALIZADO',6,'',''),(31,'1','2000','2000','12','12','8','8','SEMANAL','2020-01-20','180','180','160','160','2160','2160','2020-01-20 16:00:27','FINALIZADO',130,'4','8'),(32,'','1111','1000','12','12','11','11','DIARIO','2020-01-31','102.8','92.5','122.3','110','1233.3','1110','2020-01-30 00:01:06','PREAPROBADO',7,'',''),(33,'1','1000','1000','5','5','10','10','DIARIO','2020-02-29','220','220','100','100','1100','1100','2020-02-01 02:54:54','FINALIZADO',4,'',''),(34,'1','1000','1000','5','5','10','10','SEMANAL','2020-02-29','220','220','100','100','1100','1100','2020-02-01 02:58:14','FINALIZADO',5,'',''),(35,'2','2000','2000','5','5','10','10','DIARIO','2020-02-29','440','440','200','200','2200','2200','2020-02-01 03:02:28','FINALIZADO',6,'',''),(36,'2','1000','1000','5','5','10','10','DIARIO','2020-02-29','220','220','100','100','1100','1100','2020-02-01 03:06:08','FINALIZADO',7,'',''),(37,'2','1000','1000','5','5','8','8','DIARIO','2020-03-03','216','216','80','80','1080','1080','2020-02-01 03:07:37','FINALIZADO',4,'',''),(38,'3','1111','1111','12','12','11','11','DIARIO','2020-03-05','102.8','102.8','122.3','122.3','1233.3','1233.3','2020-02-01 03:09:44','FINALIZADO',4,'',''),(39,'2','1000','1000','12','12','8','8','DIARIO','2020-01-30','90','90','80','80','1080','1080','2020-02-01 03:20:56','FINALIZADO',11,'','');
+/*!40000 ALTER TABLE `creditos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cuenta_pf`
+--
+
+DROP TABLE IF EXISTS `cuenta_pf`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cuenta_pf` (
+  `idcuenta` int(11) NOT NULL AUTO_INCREMENT,
+  `monto_inicio` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `monto_fin` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_inicio` datetime NOT NULL,
+  `fecha_fin` datetime NOT NULL,
+  `fecha_retiro` datetime DEFAULT NULL,
+  `interes` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `estado` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `clientes_idcliente` int(11) NOT NULL,
+  `usuarios_idusuario` int(11) NOT NULL,
+  PRIMARY KEY (`idcuenta`),
+  KEY `fk_cuenta_corriente_clientes1_idx` (`clientes_idcliente`),
+  KEY `fk_cuenta_corriente_usuarios1_idx` (`usuarios_idusuario`),
+  CONSTRAINT `fk_cuenta_corriente_clientes1` FOREIGN KEY (`clientes_idcliente`) REFERENCES `clientes` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cuenta_corriente_usuarios1` FOREIGN KEY (`usuarios_idusuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cuenta_pf`
+--
+
+LOCK TABLES `cuenta_pf` WRITE;
+/*!40000 ALTER TABLE `cuenta_pf` DISABLE KEYS */;
+INSERT INTO `cuenta_pf` VALUES (5,'1000','1050','2019-12-30 10:54:23','2020-03-25 00:00:00',NULL,'5','HABILITADO',71,1),(29,'1200','1440','2019-12-30 11:37:54','2019-12-24 00:00:00','2019-12-30 16:23:09','20','VENCIDO',84,1),(30,'700','784','2019-12-30 11:39:23','2020-07-29 00:00:00','2020-01-03 10:56:43','12','VENCIDO',117,1),(31,'2000','2100','2019-12-30 17:50:48','2020-06-11 00:00:00',NULL,'5','HABILITADO',12,1);
+/*!40000 ALTER TABLE `cuenta_pf` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `desembolso`
+--
+
+DROP TABLE IF EXISTS `desembolso`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `desembolso` (
+  `iddesembolso` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha_reg` datetime NOT NULL,
+  `fecha_desem` datetime DEFAULT NULL,
+  `creditos_idcredito` int(11) NOT NULL,
+  `usuarios_idusuario` int(11) DEFAULT NULL,
+  PRIMARY KEY (`iddesembolso`),
+  KEY `fk_desembolso_creditos1_idx` (`creditos_idcredito`),
+  KEY `fk_desembolso_usuarios1_idx` (`usuarios_idusuario`),
+  CONSTRAINT `fk_desembolso_creditos1` FOREIGN KEY (`creditos_idcredito`) REFERENCES `creditos` (`idcredito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_desembolso_usuarios1` FOREIGN KEY (`usuarios_idusuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `desembolso`
+--
+
+LOCK TABLES `desembolso` WRITE;
+/*!40000 ALTER TABLE `desembolso` DISABLE KEYS */;
+INSERT INTO `desembolso` VALUES (5,'2019-12-02 18:02:27','2019-12-05 13:00:09',20,9),(6,'2019-12-05 13:03:48','2019-12-05 14:47:45',14,9),(8,'2019-12-06 10:18:53','2019-12-06 10:19:04',17,1),(9,'2019-12-18 10:52:27','2019-12-18 10:59:09',22,1),(10,'2019-12-18 11:22:07','2019-12-18 11:22:25',23,1),(11,'2019-12-19 11:27:24','2019-12-19 12:04:41',24,1),(12,'2019-12-18 12:03:44','2019-12-18 12:04:00',25,1),(13,'2019-12-18 12:35:48','2019-12-18 12:36:14',26,1),(14,'2019-12-18 12:37:28','2019-12-18 12:37:40',27,1),(15,'2019-12-18 15:43:53','2019-12-18 15:44:28',28,1),(16,'2019-12-19 10:41:05','2019-12-19 10:41:19',29,1),(17,'2019-12-21 09:39:00','2019-12-21 09:40:04',21,1),(18,'2020-01-18 11:47:57','2020-01-20 13:04:41',30,1),(19,'2020-01-20 13:05:59','2020-01-20 13:06:30',15,1),(20,'2020-01-20 16:00:41','2020-01-20 16:01:41',31,1),(21,'2020-02-01 02:55:32','2020-02-01 02:55:41',33,1),(22,'2020-02-01 02:58:39','2020-02-01 02:58:51',34,1),(23,'2020-02-01 03:02:41','2020-02-01 03:02:51',35,1),(24,'2020-02-01 03:06:23','2020-02-01 03:06:32',36,1),(25,'2020-02-01 03:07:54','2020-02-01 03:08:07',37,1),(26,'2020-02-01 03:10:04','2020-02-01 03:10:15',38,1),(27,'2020-02-01 03:21:14','2020-02-01 03:21:24',39,1);
+/*!40000 ALTER TABLE `desembolso` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `movimientos`
+--
+
+DROP TABLE IF EXISTS `movimientos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `movimientos` (
+  `idmovimiento` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `monto` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `concepto` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_mov` datetime NOT NULL,
+  `autoriza` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `tipo_comprobante` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `nro_comprobante` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `detalle` text COLLATE utf8_spanish_ci,
+  `cajas_idcaja` int(11) NOT NULL,
+  `usuarios_idusuario` int(11) NOT NULL,
+  `creditos_idcredito` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idmovimiento`),
+  KEY `fk_movimientos_cajas1_idx` (`cajas_idcaja`),
+  KEY `fk_movimientos_usuarios1_idx` (`usuarios_idusuario`),
+  KEY `fk_movimientos_creditos1_idx` (`creditos_idcredito`),
+  CONSTRAINT `fk_movimientos_cajas1` FOREIGN KEY (`cajas_idcaja`) REFERENCES `cajas` (`idcaja`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_movimientos_creditos1` FOREIGN KEY (`creditos_idcredito`) REFERENCES `creditos` (`idcredito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_movimientos_usuarios1` FOREIGN KEY (`usuarios_idusuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=155 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `movimientos`
+--
+
+LOCK TABLES `movimientos` WRITE;
+/*!40000 ALTER TABLE `movimientos` DISABLE KEYS */;
+INSERT INTO `movimientos` VALUES (16,'INGRESO','100','otros','2019-11-25 09:52:50','','boleta','65456','mmm',2,1,NULL),(17,'INGRESO','10000','otros','2019-12-02 18:03:52','','sdfs','sdfdsf','',2,1,NULL),(18,'EGRESO','1222','DESEMBOLSO DE CREDITO','2019-12-02 18:04:14','ADMINISTRADOR','VOUCHER','5',NULL,2,1,NULL),(19,'EGRESO','1222','DESEMBOLSO DE CREDITO','2019-12-03 16:56:40','ADMINISTRADOR','VOUCHER','5',NULL,2,1,NULL),(20,'EGRESO','1222','DESEMBOLSO DE CREDITO','2019-12-03 17:00:18','ADMINISTRADOR','VOUCHER','5',NULL,2,1,NULL),(21,'INGRESO','1222','EXTORNO DE DESEMBOLSO','2019-12-03 17:00:52','ADMINISTRADOR','VOUCHER','5',NULL,3,1,NULL),(22,'INGRESO','50','ndndfdn','2019-12-03 17:16:31','','fdb','dfb','',2,9,NULL),(23,'EGRESO','5','cvdvdf','2019-12-03 17:17:04','','vdfv','dfvfdv','',3,11,NULL),(24,'EGRESO','7','vvvv','2019-12-03 17:17:30','','vvv','vvv','',3,11,NULL),(25,'EGRESO','1222','DESEMBOLSO DE CREDITO','2019-12-05 13:00:09','ADMINISTRADOR','VOUCHER','5',NULL,2,9,NULL),(26,'EGRESO','1000','DESEMBOLSO DE CREDITO','2019-12-05 13:04:14','ADMINISTRADOR','VOUCHER','6',NULL,2,9,NULL),(27,'INGRESO','1000','EXTORNO DE DESEMBOLSO','2019-12-05 13:05:42','ADMINISTRADOR','VOUCHER','6',NULL,2,10,NULL),(28,'EGRESO','1000','DESEMBOLSO DE CREDITO','2019-12-05 14:47:45','ADMINISTRADOR','VOUCHER','6',NULL,2,9,NULL),(29,'INGRESO','9000','dsdv','2019-12-06 10:17:06','','dsv','sdv','',2,1,NULL),(30,'EGRESO','8000','DESEMBOLSO DE CREDITO','2019-12-06 10:17:14','ADMINISTRADOR','VOUCHER','7',NULL,2,1,NULL),(31,'INGRESO','8000','EXTORNO DE DESEMBOLSO','2019-12-06 10:18:20','ADMINISTRADOR','VOUCHER','7',NULL,2,1,NULL),(32,'EGRESO','8000','DESEMBOLSO DE CREDITO','2019-12-06 10:19:04','ADMINISTRADOR','VOUCHER','8',NULL,2,1,NULL),(33,'INGRESO','247','PAGO DE CUOTA DE CREDITO','2019-12-16 01:37:53','CAJERO','VOUCHER','10',NULL,2,1,NULL),(34,'INGRESO','220','PAGO DE CUOTA DE CREDITO','2019-12-17 17:07:29','CAJERO','VOUCHER','0',NULL,2,1,NULL),(35,'INGRESO','230','PAGO DE CUOTA DE CREDITO','2019-12-17 17:09:41','CAJERO','VOUCHER','0',NULL,2,1,NULL),(36,'INGRESO','235','PAGO DE CUOTA DE CREDITO','2019-12-17 17:10:30','CAJERO','VOUCHER','0',NULL,2,1,NULL),(37,'INGRESO','5.5','PAGO DE CUOTA DE CREDITO','2019-12-17 17:11:01','CAJERO','VOUCHER','0',NULL,2,1,NULL),(38,'INGRESO','500','PAGO DE CUOTA DE CREDITO','2019-12-17 17:26:36','CAJERO','VOUCHER','0',NULL,2,1,NULL),(39,'INGRESO','400.8','PAGO DE CUOTA DE CREDITO','2019-12-17 17:44:47','CAJERO','VOUCHER','0',NULL,2,1,NULL),(40,'INGRESO','1500','PAGO DE CUOTA DE CREDITO','2019-12-17 17:48:46','CAJERO','VOUCHER','0',NULL,2,1,NULL),(41,'INGRESO','100','PAGO DE CUOTA DE CREDITO','2019-12-17 17:54:05','CAJERO','VOUCHER','0',NULL,2,1,NULL),(42,'INGRESO','5','PAGO DE CUOTA DE CREDITO','2019-12-17 17:59:54','CAJERO','VOUCHER','0',NULL,2,1,NULL),(43,'INGRESO','900','PAGO DE CUOTA DE CREDITO','2019-12-17 18:00:11','CAJERO','VOUCHER','0',NULL,2,1,NULL),(44,'INGRESO','-2','PAGO DE CUOTA DE CREDITO','2019-12-17 18:04:04','CAJERO','VOUCHER','0',NULL,2,1,NULL),(45,'INGRESO','0','PAGO DE CUOTA DE CREDITO','2019-12-17 18:07:10','CAJERO','VOUCHER','0',NULL,2,1,NULL),(46,'INGRESO','130','PAGO DE CUOTA DE CREDITO','2019-12-18 10:10:48','CAJERO','VOUCHER','0',NULL,2,1,NULL),(47,'INGRESO','25.6','PAGO DE CUOTA DE CREDITO','2019-12-18 10:14:50','CAJERO','VOUCHER','0',NULL,3,1,NULL),(48,'INGRESO','25.8','PAGO DE CUOTA DE CREDITO','2019-12-18 10:32:57','CAJERO','VOUCHER','0',NULL,2,1,NULL),(49,'EGRESO','500','DESEMBOLSO DE CREDITO','2019-12-18 10:59:09','ADMINISTRADOR','VOUCHER','9',NULL,2,1,NULL),(50,'EGRESO','300','DESEMBOLSO DE CREDITO','2019-12-18 11:22:25','ADMINISTRADOR','VOUCHER','10',NULL,2,1,NULL),(51,'EGRESO','1200','DESEMBOLSO DE CREDITO','2019-12-19 11:27:36','ADMINISTRADOR','VOUCHER','11',NULL,2,1,NULL),(52,'INGRESO','5','PAGO DE CUOTA DE CREDITO','2019-12-18 12:00:21','CAJERO','VOUCHER','0',NULL,2,1,NULL),(53,'EGRESO','800','DESEMBOLSO DE CREDITO','2019-12-18 12:04:00','ADMINISTRADOR','VOUCHER','12',NULL,2,1,NULL),(54,'EGRESO','400','DESEMBOLSO DE CREDITO','2019-12-18 12:36:14','ADMINISTRADOR','VOUCHER','13',NULL,2,1,NULL),(55,'EGRESO','100','DESEMBOLSO DE CREDITO','2019-12-18 12:37:40','ADMINISTRADOR','VOUCHER','14',NULL,2,1,NULL),(56,'EGRESO','2500','DESEMBOLSO DE CREDITO','2019-12-18 15:44:28','ADMINISTRADOR','VOUCHER','15',NULL,2,1,NULL),(57,'INGRESO','100','PAGO DE CUOTA DE CREDITO','2019-12-18 15:47:11','CAJERO','VOUCHER','0',NULL,2,1,NULL),(58,'EGRESO','100','bdfb','2019-12-18 17:19:03','','dfb','dfbfb','',9,9,NULL),(59,'EGRESO','100','cascsc','2019-12-18 17:21:01','','scacs','23','',9,9,NULL),(60,'EGRESO','100','VDFVFD','2019-12-18 17:37:58','','DFV','DFV','',9,9,NULL),(61,'INGRESO','1000','PAGO DE CUOTA DE CREDITO','2019-12-19 09:57:13','CAJERO','VOUCHER','0',NULL,9,9,NULL),(62,'INGRESO','20','PAGO DE CUOTA DE CREDITO','2019-12-19 09:59:32','CAJERO','VOUCHER','0',NULL,9,9,NULL),(63,'EGRESO','400','DESEMBOLSO DE CREDITO','2019-12-19 10:41:19','ADMINISTRADOR','VOUCHER','16',NULL,2,1,NULL),(64,'INGRESO','150','PAGO DE CUOTA DE CREDITO','2019-12-19 12:03:27','CAJERO','VOUCHER','0',NULL,2,1,17),(65,'INGRESO','1200','EXTORNO DE DESEMBOLSO','2019-12-19 12:04:08','ADMINISTRADOR','VOUCHER','11',NULL,2,1,NULL),(66,'EGRESO','1200','DESEMBOLSO DE CREDITO','2019-12-19 12:04:41','ADMINISTRADOR','VOUCHER','11',NULL,2,1,24),(67,'INGRESO','30','ddddd','2019-12-19 15:37:58','','sds','23','',2,1,NULL),(68,'EGRESO','10','sssss','2019-12-19 15:38:09','','ssss','65456','',2,1,NULL),(69,'INGRESO','200','PAGO DE CUOTA DE CREDITO','2019-12-19 16:02:38','CAJERO','VOUCHER','0',NULL,2,1,17),(70,'INGRESO','120','PAGO DE CUOTA DE CREDITO','2019-12-19 19:07:01','CAJERO','VOUCHER','0',NULL,9,1,20),(71,'EGRESO','15','DFVVDV','2019-12-19 15:39:10','ADMINISTRADOR','VDFVDV','34545',NULL,9,1,NULL),(72,'INGRESO','3000','FONDOS PARA CAJA','2019-12-21 09:39:54','','Voucher','0','',9,1,NULL),(73,'EGRESO','2500','DESEMBOLSO DE CREDITO','2019-12-21 09:40:04','ADMINISTRADOR','VOUCHER','17',NULL,9,1,21),(74,'EGRESO','50','COMPRA DE MATERIALES','2019-12-21 09:40:33','','Boleta','125','',9,1,NULL),(75,'INGRESO','400','PAGO DE CUOTA DE CREDITO','2019-12-21 09:40:58','CAJERO','VOUCHER','0',NULL,9,1,21),(76,'INGRESO','80','PAGO DE CUOTA DE CREDITO','2019-12-21 09:41:53','CAJERO','VOUCHER','0',NULL,9,1,21),(77,'INGRESO','5','PAGO DE CUOTA DE CREDITO','2019-12-28 12:30:00','CAJERO','VOUCHER','0',NULL,3,1,22),(78,'INGRESO','2','PAGO DE CUOTA DE CREDITO','2019-12-28 12:30:52','CAJERO','VOUCHER','0',NULL,3,1,22),(79,'INGRESO','1200','DEPOSITO A PLAZO FIJO','2019-12-30 11:37:54','CAJERO','VOUCHER','29',NULL,3,1,NULL),(80,'INGRESO','700','DEPOSITO A PLAZO FIJO','2019-12-30 11:39:23','CAJERO','VOUCHER','30',NULL,3,1,NULL),(81,'INGRESO','700','RETIRO DE CUENTA A PLAZO FIJO','2019-12-30 15:58:32','CAJERO','VOUCHER','30',NULL,3,1,NULL),(82,'INGRESO','1200','RETIRO DE CUENTA A PLAZO FIJO','2019-12-30 15:59:31','CAJERO','VOUCHER','29',NULL,3,1,NULL),(83,'INGRESO','1000','RETIRO DE CUENTA A PLAZO FIJO','2019-12-30 16:00:38','CAJERO','VOUCHER','5',NULL,3,1,NULL),(84,'EGRESO','1200','RETIRO DE CUENTA A PLAZO FIJO','2019-12-30 16:05:10','CAJERO','VOUCHER','29',NULL,2,1,NULL),(85,'EGRESO','1000','RETIRO DE CUENTA A PLAZO FIJO','2019-12-30 16:06:39','CAJERO','VOUCHER','5',NULL,2,1,NULL),(86,'EGRESO','1440','RETIRO DE CUENTA A PLAZO FIJO','2019-12-30 16:23:09','CAJERO','VOUCHER','29',NULL,2,1,NULL),(87,'INGRESO','343.2','PAGO DE CUOTA DE CREDITO','2019-12-30 16:48:29','CAJERO','VOUCHER','0',NULL,2,1,20),(88,'INGRESO','60','PAGO DE CUOTA DE CREDITO','2019-12-30 17:15:14','CAJERO','VOUCHER','0',NULL,2,1,22),(89,'INGRESO','30','PAGO DE CUOTA DE CREDITO','2019-12-30 17:22:51','CAJERO','VOUCHER','0',NULL,2,1,22),(90,'INGRESO','6','PAGO DE CUOTA DE CREDITO','2019-12-30 17:23:45','CAJERO','VOUCHER','0',NULL,2,1,22),(91,'INGRESO','200','PAGO DE CUOTA DE CREDITO','2019-12-30 17:30:09','CAJERO','VOUCHER','0',NULL,2,1,24),(92,'INGRESO','2000','DEPOSITO A PLAZO FIJO','2019-12-30 17:50:48','CAJERO','VOUCHER','31',NULL,2,1,NULL),(93,'EGRESO','700','RETIRO DE CUENTA A PLAZO FIJO','2020-01-03 10:56:43','CAJERO','VOUCHER','30',NULL,2,1,NULL),(94,'EGRESO','2000','DESEMBOLSO DE CREDITO','2020-01-20 13:03:37','ADMINISTRADOR','VOUCHER','18',NULL,2,1,30),(95,'INGRESO','2000','EXTORNO DE DESEMBOLSO','2020-01-20 13:04:30','ADMINISTRADOR','VOUCHER','18',NULL,2,1,NULL),(96,'EGRESO','2000','DESEMBOLSO DE CREDITO','2020-01-20 13:04:41','ADMINISTRADOR','VOUCHER','18',NULL,2,1,30),(97,'EGRESO','1000','DESEMBOLSO DE CREDITO','2020-01-20 13:06:30','ADMINISTRADOR','VOUCHER','19',NULL,9,1,15),(98,'INGRESO','6000','otros','2020-01-20 16:01:34','','ninguno','0','',9,1,NULL),(99,'EGRESO','2000','DESEMBOLSO DE CREDITO','2020-01-20 16:01:41','ADMINISTRADOR','VOUCHER','20',NULL,9,1,31),(100,'INGRESO','2','PAGO DE CUOTA DE CREDITO','2020-01-20 18:14:11','CAJERO','VOUCHER','0',NULL,3,1,14),(101,'INGRESO','400','PAGO DE CUOTA DE CREDITO','2020-01-20 18:14:43','CAJERO','VOUCHER','0',NULL,2,1,15),(102,'INGRESO','400','PAGO DE CUOTA DE CREDITO','2020-01-20 18:14:58','CAJERO','VOUCHER','0',NULL,9,1,15),(103,'INGRESO','100','PAGO DE CUOTA DE CREDITO','2020-01-20 18:15:03','CAJERO','VOUCHER','0',NULL,9,1,15),(104,'INGRESO','1','PAGO DE CUOTA DE CREDITO','2020-01-20 18:15:50','CAJERO','VOUCHER','0',NULL,9,1,15),(105,'INGRESO','3','PAGO DE CUOTA DE CREDITO','2020-01-20 18:18:20','CAJERO','VOUCHER','0',NULL,2,1,15),(106,'INGRESO','200','PAGO DE CUOTA DE CREDITO','2020-01-20 18:18:29','CAJERO','VOUCHER','0',NULL,2,1,23),(107,'INGRESO','200','PAGO DE CUOTA DE CREDITO','2020-01-20 19:24:40','CAJERO','VOUCHER','0',NULL,2,1,23),(108,'INGRESO','45','PAGO DE CUOTA DE CREDITO','2020-01-20 19:24:49','CAJERO','VOUCHER','0',NULL,2,1,29),(109,'INGRESO','1100','PAGO DE CUOTA DE CREDITO','2020-01-20 19:25:09','CAJERO','VOUCHER','0',NULL,2,1,31),(110,'INGRESO','2','PAGO DE CUOTA DE CREDITO','2020-01-29 10:10:09','CAJERO','VOUCHER','0',NULL,2,1,17),(111,'INGRESO','10','PAGO DE CUOTA DE CREDITO','2020-01-29 10:10:54','CAJERO','VOUCHER','0',NULL,2,1,24),(112,'INGRESO','30','PAGO DE CUOTA DE CREDITO','2020-01-29 10:30:24','CAJERO','VOUCHER','0',NULL,2,1,17),(113,'INGRESO','600','PAGO DE CUOTA DE CREDITO','2020-01-29 10:30:38','CAJERO','VOUCHER','0',NULL,2,1,17),(114,'INGRESO','945.6','PAGO DE CUOTA DE CREDITO','2020-01-30 13:14:16','CAJERO','VOUCHER','0',NULL,2,1,20),(115,'INGRESO','1','PAGO DE CUOTA DE CREDITO','2020-01-31 15:10:23','CAJERO','VOUCHER','0',NULL,2,1,20),(116,'INGRESO','1','PAGO DE CUOTA DE CREDITO','2020-01-31 15:10:51','CAJERO','VOUCHER','0',NULL,2,1,20),(117,'INGRESO','1','PAGO DE CUOTA DE CREDITO','2020-01-31 15:13:07','CAJERO','VOUCHER','0',NULL,2,1,20),(118,'INGRESO','1','PAGO DE CUOTA DE CREDITO','2020-01-31 15:15:01','CAJERO','VOUCHER','0',NULL,2,1,20),(119,'INGRESO','5','PAGO DE CUOTA DE CREDITO','2020-01-31 17:27:14','CAJERO','VOUCHER','0',NULL,2,1,15),(120,'INGRESO','2169','PAGO DE CUOTA DE CREDITO','2020-02-01 01:53:01','CAJERO','VOUCHER','0',NULL,2,1,30),(121,'INGRESO','2175','PAGO DE CUOTA DE CREDITO','2020-02-01 01:56:38','CAJERO','VOUCHER','0',NULL,2,1,21),(122,'INGRESO','2757.5','PAGO DE CUOTA DE CREDITO','2020-02-01 01:58:28','CAJERO','VOUCHER','0',NULL,2,1,28),(123,'INGRESO','187','PAGO DE CUOTA DE CREDITO','2020-02-01 02:05:53','CAJERO','VOUCHER','0',NULL,2,1,27),(124,'INGRESO','508','PAGO DE CUOTA DE CREDITO','2020-02-01 02:08:30','CAJERO','VOUCHER','0',NULL,2,1,26),(125,'INGRESO','1','PAGO DE CUOTA DE CREDITO','2020-02-01 02:15:48','CAJERO','VOUCHER','0',NULL,2,1,26),(126,'INGRESO','453','PAGO DE CUOTA DE CREDITO','2020-02-01 02:16:31','CAJERO','VOUCHER','0',NULL,2,1,29),(127,'INGRESO','1','PAGO DE CUOTA DE CREDITO','2020-02-01 02:17:26','CAJERO','VOUCHER','0',NULL,2,1,23),(128,'INGRESO','1','PAGO DE CUOTA DE CREDITO','2020-02-01 02:17:58','CAJERO','VOUCHER','0',NULL,2,1,14),(129,'INGRESO','56.2','PAGO DE CUOTA DE CREDITO','2020-02-01 02:18:29','CAJERO','VOUCHER','0',NULL,2,1,14),(130,'INGRESO','2','PAGO DE CUOTA DE CREDITO','2020-02-01 02:21:23','CAJERO','VOUCHER','0',NULL,2,1,25),(131,'INGRESO','940.5','PAGO DE CUOTA DE CREDITO','2020-02-01 02:22:58','CAJERO','VOUCHER','0',NULL,2,1,25),(132,'INGRESO','4','PAGO DE CUOTA DE CREDITO','2020-02-01 02:28:28','CAJERO','VOUCHER','0',NULL,2,1,24),(133,'INGRESO','1150','PAGO DE CUOTA DE CREDITO','2020-02-01 02:29:05','CAJERO','VOUCHER','0',NULL,2,1,24),(134,'INGRESO','726.6','PAGO DE CUOTA DE CREDITO','2020-02-01 02:31:35','CAJERO','VOUCHER','0',NULL,2,1,17),(135,'INGRESO','3000','PAGO DE CUOTA DE CREDITO','2020-02-01 02:36:51','CAJERO','VOUCHER','0',NULL,2,1,17),(136,'INGRESO','0','PAGO DE CUOTA DE CREDITO','2020-02-01 02:42:28','CAJERO','VOUCHER','0',NULL,2,1,17),(137,'INGRESO','1060','PAGO DE CUOTA DE CREDITO','2020-02-01 02:43:57','CAJERO','VOUCHER','0',NULL,2,1,31),(138,'INGRESO','0','PAGO DE CUOTA DE CREDITO','2020-02-01 02:47:06','CAJERO','VOUCHER','0',NULL,2,1,31),(139,'INGRESO','0','PAGO DE CUOTA DE CREDITO','2020-02-01 02:53:40','CAJERO','VOUCHER','0',NULL,2,1,24),(140,'INGRESO','0','PAGO DE CUOTA DE CREDITO','2020-02-01 02:53:49','CAJERO','VOUCHER','0',NULL,2,1,28),(141,'EGRESO','1000','DESEMBOLSO DE CREDITO','2020-02-01 02:55:41','ADMINISTRADOR','VOUCHER','21',NULL,2,1,33),(142,'INGRESO','100','PAGO DE CUOTA DE CREDITO','2020-02-01 02:55:58','CAJERO','VOUCHER','0',NULL,2,1,33),(143,'EGRESO','1000','DESEMBOLSO DE CREDITO','2020-02-01 02:58:51','ADMINISTRADOR','VOUCHER','22',NULL,2,1,34),(144,'INGRESO','100','PAGO DE CUOTA DE CREDITO','2020-02-01 02:59:05','CAJERO','VOUCHER','0',NULL,2,1,34),(145,'INGRESO','1000','PAGO DE CUOTA DE CREDITO','2020-02-01 02:59:19','CAJERO','VOUCHER','0',NULL,2,1,34),(146,'EGRESO','2000','DESEMBOLSO DE CREDITO','2020-02-01 03:02:51','ADMINISTRADOR','VOUCHER','23',NULL,2,1,35),(147,'EGRESO','1000','DESEMBOLSO DE CREDITO','2020-02-01 03:06:32','ADMINISTRADOR','VOUCHER','24',NULL,2,1,36),(148,'EGRESO','1000','DESEMBOLSO DE CREDITO','2020-02-01 03:08:07','ADMINISTRADOR','VOUCHER','25',NULL,2,1,37),(149,'INGRESO','80','PAGO DE CUOTA DE CREDITO','2020-02-01 03:08:57','CAJERO','VOUCHER','0',NULL,2,1,37),(150,'INGRESO','1000','PAGO DE CUOTA DE CREDITO','2020-02-01 03:09:07','CAJERO','VOUCHER','0',NULL,2,1,37),(151,'EGRESO','1111','DESEMBOLSO DE CREDITO','2020-02-01 03:10:15','ADMINISTRADOR','VOUCHER','26',NULL,2,1,38),(152,'EGRESO','1000','DESEMBOLSO DE CREDITO','2020-02-01 03:21:24','ADMINISTRADOR','VOUCHER','27',NULL,2,1,39),(153,'INGRESO','90','PAGO DE CUOTA DE CREDITO','2020-02-01 03:23:05','CAJERO','VOUCHER','0',NULL,2,1,39),(154,'INGRESO','1','PAGO DE CUOTA DE CREDITO','2020-02-01 03:23:23','CAJERO','VOUCHER','0',NULL,2,1,39);
+/*!40000 ALTER TABLE `movimientos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `negocio`
+--
+
+DROP TABLE IF EXISTS `negocio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `negocio` (
+  `idnegocio` int(11) NOT NULL AUTO_INCREMENT,
+  `norm_tipo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `norm_tipo_local` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `norm_tipo_negocio` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `tiempo` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `trans_tipo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `trans_placa` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `trans_empresa` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `trans_direccion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `trans_soat` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `trans_soat_cad` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `trans_tarjeta` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `trans_tarjeta_cad` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `tipo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `url_croquis` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `clientes_idcliente` int(11) NOT NULL,
+  PRIMARY KEY (`idnegocio`),
+  KEY `fk_negocio_clientes1_idx` (`clientes_idcliente`),
+  CONSTRAINT `fk_negocio_clientes1` FOREIGN KEY (`clientes_idcliente`) REFERENCES `clientes` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `negocio`
+--
+
+LOCK TABLES `negocio` WRITE;
+/*!40000 ALTER TABLE `negocio` DISABLE KEYS */;
+INSERT INTO `negocio` VALUES (1,'MERCADO','ALQUILADO','COMERCIO','sacc','','','','','','','','','NEGOCIO',NULL,4),(2,'','','','345435','INFORMAL','sdsdf','sdf','sdfds','NO','','NO','','TRANSPORTE',NULL,4),(3,'','','','','INFORMAL','sdvv','sdvdsv','','SI','2019-12-29','NO','','TRANSPORTE',NULL,4),(4,'','','','aaaaaaa','INFORMAL','aaaaa','aaaaaaaa','aaaaaaaa','NO','','NO','','TRANSPORTE',NULL,4);
+/*!40000 ALTER TABLE `negocio` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pagos`
+--
+
+DROP TABLE IF EXISTS `pagos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pagos` (
+  `idpago` int(11) NOT NULL AUTO_INCREMENT,
+  `n_cuota_programada` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_programada` date NOT NULL,
+  `cuota_programada` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `monto` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL,
+  `mora` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `creditos_idcredito` int(11) NOT NULL,
+  `usuarios_idusuario` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idpago`),
+  KEY `fk_pagos_creditos1_idx` (`creditos_idcredito`),
+  KEY `fk_pagos_usuarios1_idx` (`usuarios_idusuario`),
+  CONSTRAINT `fk_pagos_creditos1` FOREIGN KEY (`creditos_idcredito`) REFERENCES `creditos` (`idcredito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_pagos_usuarios1` FOREIGN KEY (`usuarios_idusuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=253 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pagos`
+--
+
+LOCK TABLES `pagos` WRITE;
+/*!40000 ALTER TABLE `pagos` DISABLE KEYS */;
+INSERT INTO `pagos` VALUES (1,'1','2019-12-19','342.2','343.2','2019-12-30 16:48:29','1',20,1),(2,'2','2019-12-20','342.2','343.2','2020-01-30 13:14:16','1',20,1),(3,'3','2019-12-21','342.2','343.2','2020-01-30 13:14:16','1',20,1),(4,'4','2019-12-23','342.2','379.2','2020-01-30 13:14:16','37',20,1),(10,'1','2019-11-18','224','247','2019-12-17 17:44:47','23',14,1),(11,'2','2019-11-25','224','240','2019-12-17 17:44:47','16',14,1),(12,'3','2019-12-02','224','233','2019-12-17 17:44:47','9',14,1),(13,'4','2019-12-10','224','225','2019-12-17 17:44:47','1',14,1),(14,'5','2019-12-17','224','267','2020-02-01 02:18:29','43',14,1),(40,'1','2019-12-26','560','560','2019-12-17 17:54:05','',17,1),(41,'2','2020-01-02','560','560','2019-12-17 17:54:05','',17,1),(42,'3','2020-01-09','560','560','2019-12-17 18:00:11','',17,1),(43,'4','2020-01-16','560','560','2019-12-17 18:00:11','',17,1),(44,'5','2020-01-23','560','560','2019-12-19 09:57:13','',17,1),(45,'6','2020-01-30','560','560','2019-12-19 09:57:13','',17,1),(46,'7','2020-02-06','560','560','2019-12-19 16:02:38','',17,1),(47,'8','2020-02-13','560','560','2020-01-29 10:30:38','',17,1),(48,'9','2020-02-20','560','560','2020-02-01 02:31:35','',17,1),(49,'10','2020-02-27','560','560','2020-02-01 02:36:51','',17,1),(50,'11','2020-03-05','560','560','2020-02-01 02:36:51','',17,1),(51,'12','2020-03-12','560','560','2020-02-01 02:36:51','',17,1),(52,'13','2020-03-19','560','560','2020-02-01 02:36:51','',17,1),(53,'14','2020-03-26','560','560','2020-02-01 02:36:51','',17,1),(54,'15','2020-04-02','560','560','2020-02-01 02:36:51','',17,1),(55,'1','2019-12-19','46.7','53.7','2019-12-30 17:15:14','7',22,1),(56,'2','2019-12-28','46.7','48.7','2019-12-30 17:23:45','2',22,1),(57,'3','2020-01-04','46.7','0.59999999999999','2019-12-30 17:23:45','7',22,1),(58,'4','2020-01-11','46.7','',NULL,'7',22,1),(59,'5','2020-01-18','46.7','',NULL,'7',22,1),(60,'6','2020-01-25','46.7','',NULL,'7',22,1),(61,'7','2020-02-01','46.7','',NULL,'',22,1),(62,'8','2020-02-08','46.7','',NULL,'',22,1),(63,'9','2020-02-15','46.7','',NULL,'',22,1),(64,'10','2020-02-22','46.7','',NULL,'',22,1),(65,'11','2020-02-29','46.7','',NULL,'',22,1),(66,'12','2020-03-07','46.7','',NULL,'',22,1),(67,'1','2019-11-26','54','61','2020-01-20 18:18:29','7',23,1),(68,'2','2019-12-03','54','61','2020-01-20 18:18:29','7',23,1),(69,'3','2019-12-11','54','61','2020-01-20 18:18:29','7',23,1),(70,'4','2019-12-18','54','61','2020-01-20 19:24:40','7',23,1),(71,'5','2019-12-27','54','57','2020-01-20 19:24:40','3',23,1),(72,'6','2020-01-03','54','54','2020-01-20 19:24:40','',23,1),(93,'1','2019-11-26','58.7','59.7','2020-02-01 02:22:58','1',25,1),(94,'2','2019-11-27','58.7','59.7','2020-02-01 02:22:58','1',25,1),(95,'3','2019-11-28','58.7','59.7','2020-02-01 02:22:58','1',25,1),(96,'4','2019-11-29','58.7','59.7','2020-02-01 02:22:58','1',25,1),(97,'5','2019-11-30','58.7','59.7','2020-02-01 02:22:58','1',25,1),(98,'6','2019-12-02','58.7','59.7','2020-02-01 02:22:58','1',25,1),(99,'7','2019-12-03','58.7','59.7','2020-02-01 02:22:58','1',25,1),(100,'8','2019-12-04','58.7','59.7','2020-02-01 02:22:58','1',25,1),(101,'9','2019-12-05','58.7','59.7','2020-02-01 02:22:58','1',25,1),(102,'10','2019-12-06','58.7','59.7','2020-02-01 02:22:58','1',25,1),(103,'11','2019-12-07','58.7','59.7','2020-02-01 02:22:58','1',25,1),(104,'12','2019-12-09','58.7','59.7','2020-02-01 02:22:58','1',25,1),(105,'13','2019-12-10','58.7','59.7','2020-02-01 02:22:58','1',25,1),(106,'14','2019-12-11','58.7','59.7','2020-02-01 02:22:58','1',25,1),(107,'15','2019-12-12','58.7','106.7','2020-02-01 02:22:58','48',25,1),(108,'1','2019-11-19','44','51','2020-02-01 02:08:30','7',26,1),(109,'2','2019-11-26','44','51','2020-02-01 02:08:30','7',26,1),(110,'3','2019-12-03','44','51','2020-02-01 02:08:30','7',26,1),(111,'4','2019-12-11','44','51','2020-02-01 02:08:30','7',26,1),(112,'5','2019-12-18','44','51','2020-02-01 02:08:30','7',26,1),(113,'6','2019-12-27','44','51','2020-02-01 02:08:30','7',26,1),(114,'7','2020-01-03','44','51','2020-02-01 02:08:30','7',26,1),(115,'8','2020-01-10','44','51','2020-02-01 02:08:30','7',26,1),(116,'9','2020-01-17','44','51','2020-02-01 02:08:30','7',26,1),(117,'10','2020-01-24','44','49','2020-02-01 02:08:30','5',26,1),(118,'1','2019-11-12','22','29','2020-02-01 02:05:53','7',27,1),(119,'2','2019-11-19','22','29','2020-02-01 02:05:53','7',27,1),(120,'3','2019-11-26','22','29','2020-02-01 02:05:53','7',27,1),(121,'4','2019-12-03','22','29','2020-02-01 02:05:53','7',27,1),(122,'5','2019-12-11','22','71','2020-02-01 02:05:53','49',27,1),(123,'1','2019-12-03','186.7','193.7','2020-02-01 01:58:28','7',28,1),(124,'2','2019-12-10','186.7','193.7','2020-02-01 01:58:28','7',28,1),(125,'3','2019-12-17','186.7','193.7','2020-02-01 01:58:28','7',28,1),(126,'4','2019-12-26','186.7','193.7','2020-02-01 01:58:28','7',28,1),(127,'5','2019-12-31','186.7','193.7','2020-02-01 01:58:28','7',28,1),(128,'6','2020-01-07','186.7','193.7','2020-02-01 01:58:28','7',28,1),(129,'7','2020-01-14','186.7','193.7','2020-02-01 01:58:28','7',28,1),(130,'8','2020-01-21','186.7','193.7','2020-02-01 01:58:28','7',28,1),(131,'9','2020-01-28','186.7','187.7','2020-02-01 01:58:28','1',28,1),(132,'10','2020-02-04','186.7','186.7','2020-02-01 01:58:28','',28,1),(133,'11','2020-02-11','186.7','186.7','2020-02-01 01:58:28','',28,1),(134,'12','2020-02-18','186.7','186.7','2020-02-01 01:58:28','',28,1),(135,'13','2020-02-25','186.7','186.7','2020-02-01 01:58:28','',28,1),(136,'14','2020-03-03','186.7','186.7','2020-02-01 01:58:28','',28,1),(137,'15','2020-03-10','186.7','186.7','2020-02-01 01:58:28','',28,1),(138,'1','2019-12-10','44.8','51.8','2020-02-01 02:16:31','7',29,1),(139,'2','2019-12-17','44.8','51.8','2020-02-01 02:16:31','7',29,1),(140,'3','2019-12-26','44.8','51.8','2020-02-01 02:16:31','7',29,1),(141,'4','2019-12-31','44.8','51.8','2020-02-01 02:16:31','7',29,1),(142,'5','2020-01-07','44.8','51.8','2020-02-01 02:16:31','7',29,1),(143,'6','2020-01-14','44.8','51.8','2020-02-01 02:16:31','7',29,1),(144,'7','2020-01-21','44.8','51.8','2020-02-01 02:16:31','7',29,1),(145,'8','2020-01-28','44.8','45.8','2020-02-01 02:16:31','1',29,1),(146,'9','2020-02-04','44.8','44.8','2020-02-01 02:16:31','',29,1),(147,'10','2020-02-11','44.8','44.8','2020-02-01 02:16:31','',29,1),(148,'1','2019-12-10','66','67','2019-12-30 17:30:09','1',24,1),(149,'2','2019-12-11','66','67','2019-12-30 17:30:09','1',24,1),(150,'3','2019-12-12','66','67','2020-01-29 10:10:54','1',24,1),(151,'4','2019-12-13','66','67','2020-02-01 02:29:05','1',24,1),(152,'5','2019-12-14','66','67','2020-02-01 02:29:05','1',24,1),(153,'6','2019-12-16','66','67','2020-02-01 02:29:05','1',24,1),(154,'7','2019-12-17','66','67','2020-02-01 02:29:05','1',24,1),(155,'8','2019-12-18','66','67','2020-02-01 02:29:05','1',24,1),(156,'9','2019-12-19','66','67','2020-02-01 02:29:05','1',24,1),(157,'10','2019-12-20','66','67','2020-02-01 02:29:05','1',24,1),(158,'11','2019-12-21','66','67','2020-02-01 02:29:05','1',24,1),(159,'12','2019-12-23','66','67','2020-02-01 02:29:05','1',24,1),(160,'13','2019-12-26','66','67','2020-02-01 02:29:05','1',24,1),(161,'14','2019-12-27','66','67','2020-02-01 02:29:05','1',24,1),(162,'15','2019-12-28','66','67','2020-02-01 02:29:05','1',24,1),(163,'16','2019-12-30','66','67','2020-02-01 02:29:05','1',24,1),(164,'17','2019-12-31','66','67','2020-02-01 02:29:05','1',24,1),(165,'18','2020-01-02','66','67','2020-02-01 02:29:05','1',24,1),(166,'19','2020-01-03','66','67','2020-02-01 02:29:05','1',24,1),(167,'20','2020-01-04','66','91','2020-02-01 02:29:05','25',24,1),(168,'1','2019-12-23','262.5','262.5','2019-12-21 09:40:58',NULL,21,1),(169,'2','2019-12-30','262.5','269.5','2020-02-01 01:56:38','7',21,1),(170,'3','2020-01-06','262.5','269.5','2020-02-01 01:56:38','7',21,1),(171,'4','2020-01-13','262.5','269.5','2020-02-01 01:56:38','7',21,1),(172,'5','2020-01-20','262.5','269.5','2020-02-01 01:56:38','7',21,1),(173,'6','2020-01-27','262.5','264.5','2020-02-01 01:56:38','2',21,1),(174,'7','2020-02-03','262.5','262.5','2020-02-01 01:56:38','',21,1),(175,'8','2020-02-10','262.5','262.5','2020-02-01 01:56:38','',21,1),(176,'9','2020-02-17','262.5','262.5','2020-02-01 01:56:38','',21,1),(177,'10','2020-02-24','262.5','262.5','2020-02-01 01:56:38','',21,1),(178,'1','2020-01-20','216','223','2020-02-01 01:53:01','7',30,1),(179,'2','2020-01-27','216','218','2020-02-01 01:53:01','2',30,1),(180,'3','2020-02-03','216','216','2020-02-01 01:53:01','',30,1),(181,'4','2020-02-10','216','216','2020-02-01 01:53:01','',30,1),(182,'5','2020-02-17','216','216','2020-02-01 01:53:01','',30,1),(183,'6','2020-02-24','216','216','2020-02-01 01:53:01','',30,1),(184,'7','2020-03-02','216','216','2020-02-01 01:53:01','',30,1),(185,'8','2020-03-09','216','216','2020-02-01 01:53:01','',30,1),(186,'9','2020-03-16','216','216','2020-02-01 01:53:01','',30,1),(187,'10','2020-03-23','216','216','2020-02-01 01:53:01','',30,1),(188,'1','2019-12-10','280','280','2020-01-20 18:14:43',NULL,15,1),(189,'2','2019-12-17','280','280','2020-01-20 18:14:58',NULL,15,1),(190,'3','2019-12-26','280','280','2020-01-20 18:15:03',NULL,15,1),(191,'4','2019-12-31','280','69','2020-01-31 17:27:14','32',15,1),(192,'1','2020-01-20','180','180','2020-01-20 19:25:09',NULL,31,1),(193,'2','2020-01-27','180','180','2020-01-20 19:25:09',NULL,31,1),(194,'3','2020-02-03','180','180','2020-01-20 19:25:09',NULL,31,1),(195,'4','2020-02-10','180','180','2020-01-20 19:25:09',NULL,31,1),(196,'5','2020-02-17','180','180','2020-01-20 19:25:09',NULL,31,1),(197,'6','2020-02-24','180','180','2020-01-20 19:25:09',NULL,31,1),(198,'7','2020-03-02','180','180','2020-02-01 02:43:57','',31,1),(199,'8','2020-03-09','180','180','2020-02-01 02:43:57','',31,1),(200,'9','2020-03-16','180','180','2020-02-01 02:43:57','',31,1),(201,'10','2020-03-23','180','180','2020-02-01 02:43:57','',31,1),(202,'11','2020-03-30','180','180','2020-02-01 02:43:57','',31,1),(203,'12','2020-04-06','180','180','2020-02-01 02:43:57','',31,1),(204,'1','2020-02-29','220','100','2020-02-01 02:55:58','',33,1),(205,'2','2020-03-02','220','0',NULL,'',33,1),(206,'3','2020-03-03','220','0',NULL,'',33,1),(207,'4','2020-03-04','220','0',NULL,'',33,1),(208,'5','2020-03-05','220','0',NULL,'',33,1),(209,'1','2020-02-29','220','220','2020-02-01 02:59:19',NULL,34,1),(210,'2','2020-03-07','220','220','2020-02-01 02:59:19',NULL,34,1),(211,'3','2020-03-14','220','220','2020-02-01 02:59:19',NULL,34,1),(212,'4','2020-03-21','220','220','2020-02-01 02:59:19',NULL,34,1),(213,'5','2020-03-28','220','220','2020-02-01 02:59:19',NULL,34,1),(214,'1','2020-02-29','440',NULL,NULL,'',35,NULL),(215,'2','2020-03-02','440',NULL,NULL,'',35,NULL),(216,'3','2020-03-03','440',NULL,NULL,'',35,NULL),(217,'4','2020-03-04','440',NULL,NULL,'',35,NULL),(218,'5','2020-03-05','440',NULL,NULL,'',35,NULL),(219,'1','2020-02-29','220',NULL,NULL,'',36,NULL),(220,'2','2020-03-02','220',NULL,NULL,'',36,NULL),(221,'3','2020-03-03','220',NULL,NULL,'',36,NULL),(222,'4','2020-03-04','220',NULL,NULL,'',36,NULL),(223,'5','2020-03-05','220',NULL,NULL,'',36,NULL),(224,'1','2020-03-03','216','216','2020-02-01 03:09:07',NULL,37,1),(225,'2','2020-03-04','216','216','2020-02-01 03:09:07',NULL,37,1),(226,'3','2020-03-05','216','216','2020-02-01 03:09:07',NULL,37,1),(227,'4','2020-03-06','216','216','2020-02-01 03:09:07',NULL,37,1),(228,'5','2020-03-07','216','216','2020-02-01 03:09:07',NULL,37,1),(229,'1','2020-03-05','102.8',NULL,NULL,'',38,NULL),(230,'2','2020-03-06','102.8',NULL,NULL,'',38,NULL),(231,'3','2020-03-07','102.8',NULL,NULL,'',38,NULL),(232,'4','2020-03-09','102.8',NULL,NULL,'',38,NULL),(233,'5','2020-03-10','102.8',NULL,NULL,'',38,NULL),(234,'6','2020-03-11','102.8',NULL,NULL,'',38,NULL),(235,'7','2020-03-12','102.8',NULL,NULL,'',38,NULL),(236,'8','2020-03-13','102.8',NULL,NULL,'',38,NULL),(237,'9','2020-03-14','102.8',NULL,NULL,'',38,NULL),(238,'10','2020-03-16','102.8',NULL,NULL,'',38,NULL),(239,'11','2020-03-17','102.8',NULL,NULL,'',38,NULL),(240,'12','2020-03-18','102.8',NULL,NULL,'',38,NULL),(241,'1','2020-01-30','90','91','2020-02-01 03:23:23','1',39,1),(242,'2','2020-01-31','90','0',NULL,'1',39,1),(243,'3','2020-02-01','90','0',NULL,'',39,1),(244,'4','2020-02-03','90','0',NULL,'',39,1),(245,'5','2020-02-04','90','0',NULL,'',39,1),(246,'6','2020-02-05','90','0',NULL,'',39,1),(247,'7','2020-02-06','90','0',NULL,'',39,1),(248,'8','2020-02-07','90','0',NULL,'',39,1),(249,'9','2020-02-08','90','0',NULL,'',39,1),(250,'10','2020-02-10','90','0',NULL,'',39,1),(251,'11','2020-02-11','90','0',NULL,'',39,1),(252,'12','2020-02-12','90','0',NULL,'',39,1);
+/*!40000 ALTER TABLE `pagos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `solicitudes`
+--
+
+DROP TABLE IF EXISTS `solicitudes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `solicitudes` (
+  `idsolicitud` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha_reg` datetime NOT NULL,
+  `fecha_mod` datetime DEFAULT NULL,
+  `fecha_pre` datetime DEFAULT NULL,
+  `negocio_des` text COLLATE utf8_spanish_ci,
+  `creditos_idcredito` int(11) NOT NULL,
+  `usuarios_idusuario` int(11) NOT NULL,
+  PRIMARY KEY (`idsolicitud`),
+  KEY `fk_solicitudes_creditos1_idx` (`creditos_idcredito`),
+  KEY `fk_solicitudes_usuarios1_idx` (`usuarios_idusuario`),
+  CONSTRAINT `fk_solicitudes_creditos1` FOREIGN KEY (`creditos_idcredito`) REFERENCES `creditos` (`idcredito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_solicitudes_usuarios1` FOREIGN KEY (`usuarios_idusuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `solicitudes`
+--
+
+LOCK TABLES `solicitudes` WRITE;
+/*!40000 ALTER TABLE `solicitudes` DISABLE KEYS */;
+INSERT INTO `solicitudes` VALUES (14,'2019-11-26 12:30:07',NULL,'2019-12-03 16:15:58',NULL,14,1),(15,'2019-12-02 09:34:19','2020-01-20 13:05:43','2020-01-20 13:05:47','',15,1),(17,'2019-12-02 10:32:13',NULL,'2019-12-06 10:15:38',NULL,17,8),(20,'2019-12-02 11:06:20',NULL,'2019-12-02 11:08:39',NULL,20,7),(21,'2019-12-17 12:13:40',NULL,'2019-12-21 09:38:48',NULL,21,1),(22,'2019-12-18 10:51:19',NULL,'2019-12-18 10:52:06',NULL,22,1),(23,'2019-12-18 10:52:01',NULL,'2019-12-18 11:21:52',NULL,23,1),(24,'2019-12-19 11:27:08',NULL,'2019-12-19 11:27:12',NULL,24,1),(25,'2019-12-18 12:03:29',NULL,'2019-12-18 12:03:32',NULL,25,1),(26,'2019-12-18 12:35:22',NULL,'2019-12-18 12:35:35',NULL,26,1),(27,'2019-12-18 12:37:15',NULL,'2019-12-18 12:37:19',NULL,27,1),(28,'2019-12-18 15:43:17',NULL,'2019-12-18 15:43:37',NULL,28,1),(29,'2019-12-19 10:40:48',NULL,'2019-12-19 10:40:54',NULL,29,1),(30,'2020-01-18 09:59:16','2020-01-18 11:17:00','2020-01-18 11:22:09','cwcewc\nc\nw55',30,1),(31,'2020-01-20 16:00:27',NULL,'2020-01-20 16:00:30','otros',31,1),(32,'2020-01-30 00:01:06',NULL,'2020-01-31 15:28:15','',32,1),(33,'2020-02-01 02:54:54',NULL,'2020-02-01 02:55:21','',33,1),(34,'2020-02-01 02:58:14',NULL,'2020-02-01 02:58:28','',34,1),(35,'2020-02-01 03:02:28',NULL,'2020-02-01 03:02:30','',35,1),(36,'2020-02-01 03:06:08',NULL,'2020-02-01 03:06:11','',36,1),(37,'2020-02-01 03:07:37',NULL,'2020-02-01 03:07:40','',37,1),(38,'2020-02-01 03:09:44',NULL,'2020-02-01 03:09:46','',38,1),(39,'2020-02-01 03:20:56',NULL,'2020-02-01 03:21:00','',39,1);
+/*!40000 ALTER TABLE `solicitudes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `transferencias`
+--
+
+DROP TABLE IF EXISTS `transferencias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `transferencias` (
+  `idtransferencia` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `monto` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `concepto` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_mov` datetime NOT NULL,
+  `autoriza` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `detalle` text COLLATE utf8_spanish_ci,
+  `usuarios_idusuario` int(11) NOT NULL,
+  `cajas_idcaja` int(11) NOT NULL,
+  `cajas_idcaja1` int(11) NOT NULL,
+  `usuarios_idusuario1` int(11) NOT NULL,
+  PRIMARY KEY (`idtransferencia`),
+  KEY `fk_transferencias_usuarios1_idx` (`usuarios_idusuario`),
+  KEY `fk_transferencias_cajas1_idx` (`cajas_idcaja`),
+  KEY `fk_transferencias_cajas2_idx` (`cajas_idcaja1`),
+  KEY `fk_transferencias_usuarios2_idx` (`usuarios_idusuario1`),
+  CONSTRAINT `fk_transferencias_cajas1` FOREIGN KEY (`cajas_idcaja`) REFERENCES `cajas` (`idcaja`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_transferencias_cajas2` FOREIGN KEY (`cajas_idcaja1`) REFERENCES `cajas` (`idcaja`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_transferencias_usuarios1` FOREIGN KEY (`usuarios_idusuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_transferencias_usuarios2` FOREIGN KEY (`usuarios_idusuario1`) REFERENCES `usuarios` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transferencias`
+--
+
+LOCK TABLES `transferencias` WRITE;
+/*!40000 ALTER TABLE `transferencias` DISABLE KEYS */;
+INSERT INTO `transferencias` VALUES (2,'TRANSFERENCIA','50','otros','2019-12-05 16:20:18','adm',NULL,9,9,2,0),(3,'TRANSFERENCIA','10','gvsdv','2019-12-05 16:21:54','',NULL,9,9,2,0),(4,'TRANSFERENCIA','60','zx xz ','2019-12-05 16:22:37','',NULL,9,2,9,0),(5,'TRANSFERENCIA','40','dfgg','2019-12-05 16:42:59','',NULL,9,9,3,0),(6,'TRANSFERENCIA','40','dev','2019-12-05 16:49:51','   dcdc',NULL,11,3,9,0),(7,'TRANSFERENCIA','2','otros','2020-01-20 17:32:14',NULL,NULL,1,2,9,1),(8,'TRANSFERENCIA','10','otros','2020-01-20 17:40:04',NULL,NULL,1,9,2,2);
+/*!40000 ALTER TABLE `transferencias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuarios` (
+  `idusuario` int(11) NOT NULL AUTO_INCREMENT,
+  `privilegios` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido_pat` varchar(55) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido_mat` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(55) COLLATE utf8_spanish_ci NOT NULL,
+  `doc_nro` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `usuario` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `pass` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `nacimiento` date DEFAULT NULL,
+  `grado` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `estado_civil` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `lugar_nacimiento` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `comentarios` text COLLATE utf8_spanish_ci,
+  `telefono` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `direccion` varchar(55) COLLATE utf8_spanish_ci NOT NULL,
+  `referencia` varchar(55) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `distrito` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `provincia` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(55) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `url_foto` varchar(55) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `habilitado` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`idusuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'ROOT','LOARDO','NUÑEZ','ORLANDO','20115680','root','admin','2019-11-02','UNIVERSITARIA','SOLTERO','OTROS','-','','-','-','-','-','root@gmail.com',NULL,'SI'),(2,'ADMINISTRADOR','ESTRADA','ROJAS','JACKELINE IVONNE','73222381','JESTRADA@ADMINISTRADOR','73222381','1994-05-15','BACHILLER','SOLTERO','TARMA','','','AV. RAMON CASTILLA N°306','','CONCEPCION','CONCEPCION','admin@gmail.com',NULL,'SI'),(3,'CAJA','GRANDOS','FERNANDEZ','LUIS ALFREDO','74892786','LGRANADOS@CAJA','74892786','1997-07-19','UNIVERSITARIA','SOLTERO','HUANCAYO','','','JR. YAUYOS N° 259','','EL TAMBO','HUANCAYO','CAJA@gmail.com',NULL,'SI'),(4,'ASESOR','HINOSTROZA','RODRIGUEZ','ELIANA LIZ','47174763','EHINOSTROZA@ASESOR','47174763','1992-01-12','UNIVERSITARIA','SOLTERO','HUANCAYO','','','AV. MARISCAL CASTILLA N° 1051','','EL TAMBO','HUANCAYO','ASESOR@gmail.com',NULL,'SI'),(6,'ASESOR','GOMEZ','MORENO','KEVIN STEVE','77269413','KGOMEZ@ASESOR','77269413','1995-12-02','UNIVERSITARIA','SOLTERO','HUANCAYO','','','JR. B LEGUIA N° 630','','CHILCA','HUANCAYO','ASESOR@gmail.com',NULL,'SI'),(7,'ASESOR','aaa','bbb','ccc','6565656565','asesor1','asesor1','0000-00-00','','','','','','ascsc','ascsac','asc','asc','',NULL,'SI'),(8,'ASESOR','111','2222','3333','232434','asesor2','asesor2','0000-00-00','','','','','','efwef','efwef','ewfwef','efef','',NULL,'SI'),(9,'CAJA','caja1','caja1','caja1','caja1','caja1','caja1','0000-00-00','','','','','','caja1','','caja1','caja1','',NULL,'SI'),(10,'ADMINISTRADOR','admin','admin','admin','admin','admin','admin','0000-00-00','','','','','','sdcd','','sdfsdf','sdc','',NULL,'SI'),(11,'CAJA','caja2','caja2','caja2','caja2','caja2','caja2','0000-00-00','','','','','','caja2','','caja2','caja2','',NULL,'SI');
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `voucher_pago`
+--
+
+DROP TABLE IF EXISTS `voucher_pago`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `voucher_pago` (
+  `idvoucher` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo_vp` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `monto_pago` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_pago` datetime NOT NULL,
+  `creditos_idcredito` int(11) NOT NULL,
+  `usuarios_idusuario` int(11) NOT NULL,
+  PRIMARY KEY (`idvoucher`),
+  KEY `fk_voucher_pago_creditos1_idx` (`creditos_idcredito`),
+  KEY `fk_voucher_pago_usuarios1_idx` (`usuarios_idusuario`),
+  CONSTRAINT `fk_voucher_pago_creditos1` FOREIGN KEY (`creditos_idcredito`) REFERENCES `creditos` (`idcredito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_voucher_pago_usuarios1` FOREIGN KEY (`usuarios_idusuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `voucher_pago`
+--
+
+LOCK TABLES `voucher_pago` WRITE;
+/*!40000 ALTER TABLE `voucher_pago` DISABLE KEYS */;
+INSERT INTO `voucher_pago` VALUES (1,NULL,'130','2019-12-18 10:10:48',17,1),(2,NULL,'25.6','2019-12-18 10:14:50',17,1),(3,NULL,'25.8','2019-12-18 10:32:57',17,1),(4,NULL,'5','2019-12-18 12:00:21',24,1),(5,NULL,'100','2019-12-18 15:47:11',28,1),(6,NULL,'1000','2019-12-19 09:57:13',17,9),(7,NULL,'20','2019-12-19 09:59:32',24,9),(8,NULL,'150','2019-12-19 12:03:27',17,1),(9,NULL,'200','2019-12-19 16:02:38',17,1),(10,NULL,'120','2019-12-19 19:07:01',20,1),(11,NULL,'400','2019-12-21 09:40:58',21,1),(12,NULL,'80','2019-12-21 09:41:53',21,1),(13,NULL,'5','2019-12-28 12:30:00',22,1),(14,NULL,'2','2019-12-28 12:30:52',22,1),(15,NULL,'343.2','2019-12-30 16:48:29',20,1),(16,NULL,'60','2019-12-30 17:15:14',22,1),(17,NULL,'30','2019-12-30 17:22:51',22,1),(18,NULL,'6','2019-12-30 17:23:45',22,1),(19,NULL,'200','2019-12-30 17:30:09',24,1),(20,NULL,'2','2020-01-20 18:14:11',14,1),(21,NULL,'400','2020-01-20 18:14:43',15,1),(22,NULL,'400','2020-01-20 18:14:58',15,1),(23,NULL,'100','2020-01-20 18:15:03',15,1),(24,NULL,'1','2020-01-20 18:15:50',15,1),(25,NULL,'3','2020-01-20 18:18:20',15,1),(26,NULL,'200','2020-01-20 18:18:29',23,1),(27,NULL,'200','2020-01-20 19:24:40',23,1),(28,NULL,'45','2020-01-20 19:24:49',29,1),(29,NULL,'1100','2020-01-20 19:25:09',31,1),(30,NULL,'2','2020-01-29 10:10:09',17,1),(31,NULL,'10','2020-01-29 10:10:54',24,1),(32,NULL,'30','2020-01-29 10:30:24',17,1),(33,NULL,'600','2020-01-29 10:30:38',17,1),(34,NULL,'945.6','2020-01-30 13:14:16',20,1),(35,NULL,'1','2020-01-31 15:10:23',20,1),(36,NULL,'1','2020-01-31 15:10:51',20,1),(37,NULL,'1','2020-01-31 15:13:07',20,1),(38,NULL,'1','2020-01-31 15:15:01',20,1),(39,'PAGO','5','2020-01-31 17:27:14',15,1),(40,'CONDONACION','240.00','2020-01-31 17:33:13',15,1),(41,'CONDONACION','491.40','2020-02-01 01:50:51',22,1),(42,'PAGO','2169','2020-02-01 01:53:01',30,1),(43,'PAGO','2175','2020-02-01 01:56:38',21,1),(44,'PAGO','2757.5','2020-02-01 01:58:28',28,1),(45,'PAGO','187','2020-02-01 02:05:53',27,1),(46,'PAGO','508','2020-02-01 02:08:30',26,1),(47,'PAGO','1','2020-02-01 02:15:48',26,1),(48,'PAGO','453','2020-02-01 02:16:31',29,1),(49,'PAGO','1','2020-02-01 02:17:26',23,1),(50,'PAGO','1','2020-02-01 02:17:58',14,1),(51,'PAGO','56.2','2020-02-01 02:18:29',14,1),(52,'PAGO','2','2020-02-01 02:21:24',25,1),(53,'PAGO','940.5','2020-02-01 02:22:58',25,1),(54,'PAGO','4','2020-02-01 02:28:28',24,1),(55,'PAGO','1150','2020-02-01 02:29:05',24,1),(56,'PAGO','726.6','2020-02-01 02:31:35',17,1),(57,'PAGO','3000','2020-02-01 02:36:51',17,1),(58,'PAGO','0','2020-02-01 02:42:28',17,1),(59,'PAGO','1060','2020-02-01 02:43:57',31,1),(60,'PAGO','0','2020-02-01 02:47:06',31,1),(61,'PAGO','0','2020-02-01 02:53:40',24,1),(62,'PAGO','0','2020-02-01 02:53:49',28,1),(63,'PAGO','100','2020-02-01 02:55:58',33,1),(64,'PAGO','100','2020-02-01 02:59:05',34,1),(65,'PAGO','1000','2020-02-01 02:59:19',34,1),(66,'CONDONACION','2200.00','2020-02-01 03:03:08',35,1),(67,'CONDONACION','1100.00','2020-02-01 03:07:03',36,1),(68,'PAGO','80','2020-02-01 03:08:57',37,1),(69,'PAGO','1000','2020-02-01 03:09:07',37,1),(70,'PAGO','90','2020-02-01 03:23:05',39,1),(71,'PAGO','1','2020-02-01 03:23:23',39,1),(72,'CONDONACION','991.00','2020-02-01 03:23:37',39,1),(73,'CONDONACION','1233.60','2020-02-01 04:51:18',38,1);
+/*!40000 ALTER TABLE `voucher_pago` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-02-03 12:41:13
