@@ -3,10 +3,10 @@
 date_default_timezone_set('America/Lima');
 
 header('Content-Type: text/html; charset=utf-8');
-define("SERVER", "localhost");
-define("USER", "root");
-define("PASSWORD", "ae9a56ed87");
-define("DBNAME", "rapidito");
+define("SERVER", "beykmhusoekvcva8ujk8-mysql.services.clever-cloud.com");
+define("USER", "udnkpboaxrvzkscu");
+define("PASSWORD", "awqqEbDdwseFC4pFcS2P");
+define("DBNAME", "beykmhusoekvcva8ujk8");
 
 $mysqli = new mysqli(
     SERVER,USER,PASSWORD,DBNAME
